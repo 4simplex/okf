@@ -15,6 +15,10 @@ const port = 3000;
 //CORS Middleware
 app.use(cors());
 
+//Set public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 //Body Parser Middleware
 app.use(bodyParser.json());
 
