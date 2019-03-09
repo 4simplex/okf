@@ -1,0 +1,297 @@
+<div class="jumbotron text-center">
+ 
+</div>
+
+<div class="container" style="max-width: 100% !important; padding-left: 0px !important; padding-right: 0px !important">
+  <header class="header">
+    <section class="header__modules">
+      <h1 class="header__modules__logo">
+      </h1>
+      <div class="header__modules__menu">
+        <button class="header__modules__menu__mobile" id="clickM"><i class="fa fa-bars"></i></button>
+        <nav id="menuM" class="header__modules__menu__container">
+          <ul class="header__modules__menu__container__list">
+            <li class="header__modules__menu__container__list__item"><a href="#">a</a></li>
+            <li class="header__modules__menu__container__list__item"><a href="#">a</a></li>
+            <li class="header__modules__menu__container__list__item"><a href="#">a</a></li>
+            <li class="header__modules__menu__container__list__item"><a href="#">a</a></li>
+            <li class="header__modules__menu__container__list__item"><a href="#">a</a></li>
+            <li class="header__modules__menu__container__list__item" *ngIf="!authService.loggedIn()"><a class="btn btn-primary" [routerLink]="['/login']">{{ this.appLiterals.btnLogin }}</a></li>
+            <li *ngIf="authService.loggedIn()" class="header__modules__menu__container__list__item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+              <a class="nav-link" (click)="this.onLogoutClick()" href="#">{{ this.appLiterals.menu.logout }}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+    <section class="header__hero">
+      <article class="header__hero__article">
+        <picture class="header__hero__article__img">
+        </picture>
+
+        <div class="header__hero__article__text">
+          <h1 class="header__hero__article__text__title">
+            <a href="#"></a>
+          </h1>
+          <p class="header__hero__article__text__content">
+          </p>
+        </div>
+
+        <div class="header__hero__article__register">
+          <h2 class="header__hero__article__register__title">Registrate Gratis!</h2>
+          <app-register></app-register>
+          <!--<form action="">
+            <label for="names" class="header__hero__article__register_label">Apellido y Nombre</label>
+            <input type="text" name="user" placeholder="Apellido y Nombre" class="header__hero__article__register_input">
+            <label for=" user" class="header__hero__article__register_label">Nombre de Usuario</label>
+            <input type="text" name="user" placeholder="Usuario" class="header__hero__article__register_input">
+            <label for=" email" class="header__hero__article__register_label">Email</label>
+            <input type="text" name="email" placeholder="Email" class="header__hero__article__register_input">
+            <label for=" user" class="header__hero__article__register_label">Contraseña</label>
+            <input type="text" name="user" placeholder="Contraseña" class="header__hero__article__register_input">
+            <button type="submit"  class="header__hero__article__register__button">Registrarse</button>
+          </form>-->
+        </div>
+      </article>
+    </section>
+  </header>
+  <section class="content">
+    <h2 class="content__title">
+      
+    </h2>
+    <p class="content__subtitle"></p>
+    <section class="content__services">
+      <article class="content__services__article">
+        <i class="fa fa-bar-chart content__services__article__icon"></i>
+        <div class="content__services__article__text">
+          <h3 class="content__services__article__text__title"></h3>
+          <p class="content__services__article__text__p">
+          </p>
+        </div>
+      </article>
+      <article class="content__services__article">
+        <i class="fa fa-television content__services__article__icon"></i>
+        <div class="content__services__article__text">
+          <h3 class="content__services__article__text__title"></h3>
+          <p class="content__services__article__text__p"></p>
+        </div>
+      </article>
+      <article class="content__services__article">
+        
+        <i class="fa fa-laptop content__services__article__icon"></i>
+        <div class="content__services__article__text">
+          <h3 class="content__services__article__text__title"></h3>
+          <p class="content__services__article__text__p"></p>
+        </div>
+      </article>
+      <article class="content__services__article">
+        
+        <i class="fa fa-rocket content__services__article__icon"></i>
+        <div class="content__services__article__text">
+          <h3 class="content__services__article__text__title"></h3>
+          <p class="content__services__article__text__p">
+          </p>
+        </div>
+      </article>
+    </section>
+  </section>
+  <section class="wide__video">
+    <article class="wide__video__info">
+      <h1 class="wide__video__info__title"></h1>
+      <p class="wide__video__info__desc"></p>
+      <button class="wide__video__info__button"></button>
+    </article>
+  </section>
+  <section class="content">
+    <p class="content__subtitle"></p>
+    <section class="content__services">
+      <article class="content__services__article">
+        <i class="fa fa-bar-chart content__services__article__icon"></i>
+        <div class="content__services__article__text">
+          <h3 class="content__services__article__text__title"></h3>
+          <p class="content__services__article__text__p">
+          </p>
+        </div>
+      </article>
+      <article class="content__services__article">
+        <i class="fa fa-television content__services__article__icon"></i>
+        <div class="content__services__article__text">
+          <h3 class="content__services__article__text__title"></h3>
+          <p class="content__services__article__text__p"></p>
+        </div>
+      </article>
+      <article class="content__services__article">
+        
+        <i class="fa fa-laptop content__services__article__icon"></i>
+        <div class="content__services__article__text">
+          <h3 class="content__services__article__text__title"></h3>
+          <p class="content__services__article__text__p"></p>
+        </div>
+      </article>
+      <article class="content__services__article">
+        
+        <i class="fa fa-rocket content__services__article__icon"></i>
+        <div class="content__services__article__text">
+          <h3 class="content__services__article__text__title"></h3>
+          <p class="content__services__article__text__p">
+          </p>
+        </div>
+      </article>
+    </section>
+  </section>
+  <section class="content">
+    <div class="content__pricing">
+    <h2 class="content__title">
+      Precios
+    </h2>
+    <p class="content__subtitle"></p>
+
+    <ul class="content__pricing__container">
+      <li class="content__pricing__container__block">
+        <ul class="content__pricing__container__block__list">
+          <li class="content__pricing__container__block__list__item">
+            sdf
+          </li>
+          <li class="content__pricing__container__block__list__item--price">
+            0
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            Feature 2
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            Feature 3
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            Feature 4
+          </li>
+          <li class="content__pricing__container__block__list__item">
+            <button class="content__pricing__container__block__list__item__button">
+              rer
+            </button>
+          </li>
+        </ul>
+      </li>
+      <li class="content__pricing__container__block">
+        <ul class="content__pricing__container__block__list">
+          <li class="content__pricing__container__block__list__item">
+            rtrt
+          </li>
+          <li class="content__pricing__container__block__list__item--price">
+            29
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            dfsdf
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            Feature 2
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            Feature 3
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            Feature 4
+          </li>
+          <li class="content__pricing__container__block__list__item">
+            <button class="content__pricing__container__block__list__item__button">
+              sdf
+            </button>
+          </li>
+        </ul>
+      </li>
+      <li class="content__pricing__container__block">
+        <ul class="content__pricing__container__block__list">
+          <li class="content__pricing__container__block__list__item">
+            sdf
+          </li>
+          <li class="content__pricing__container__block__list__item--price">
+            49
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            sdfsdf
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            Feature 2
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            Feature 3
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            Feature 4
+          </li>
+          <li class="content__pricing__container__block__list__item">
+            <button class="content__pricing__container__block__list__item__button">
+              sdfs
+            </button>
+          </li>
+        </ul>
+      </li>
+      <li class="content__pricing__container__block">
+        <ul class="content__pricing__container__block__list">
+          <li class="content__pricing__container__block__list__item">
+            sdfsdf
+          </li>
+          <li class="content__pricing__container__block__list__item--price">
+            +
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            sdfsdf
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            Feature 2
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            Feature 3
+          </li>
+          <li class="content__pricing__container__block__list__item--feature">
+            Feature 4
+          </li>
+          <li class="content__pricing__container__block__list__item">
+            <button class="content__pricing__container__block__list__item__button">
+              sdfsdf
+            </button>
+          </li>
+        </ul>
+      </li>
+      
+    </ul>
+      
+    </div>
+  </section>
+  <section class="content">
+    <div class="content__contact">
+      <h2 class="content__title">
+        Contactenos
+      </h2>
+      <p class="content__subtitle">fgfg</p>
+        <div class="content__contact__container">
+          <form action="" class="content__contact__container__form">
+            <input type="text" placeholder="Nombre..." class="content__contact__container__form__text">
+            <input type="email" placeholder="Email..." class="content__contact__container__form__text">
+            <textarea class="content__contact__container__form__textarea"></textarea>
+            <input type="submit" value="Enviar" class="content__contact__container__form__button">
+          </form>
+          <div class="content__contact__container__data">
+            <p><strong>Lorem ipsum dolor sit amet</strong>, consectetur adipisicing elit. Perferendis sint facilis harum totam.</p>
+          </div>
+        </div>
+    
+      
+    </div>
+  </section>
+  <section class="wide__footer">
+    <article class="wide__footer__block">
+      <p class="wide__footer__block__im">fgfg</p>
+      <ul class="wide__footer__block__social">
+        <li class="wide__footer__block__social__item"><a href="#" class="wide__footer__block__social__item__icon"><i class="fa fa-twitter"></i></a></li>
+        <li class="wide__footer__block__social__item"><a href="#" class="wide__footer__block__social__item__icon"><i class="fa fa-facebook"></i></a></li>
+        <li class="wide__footer__block__social__item"><a href="#" class="wide__footer__block__social__item__icon"><i class="fa fa-github"></i></a></li>
+        
+      </ul>
+
+      <p class="wide__footer__block__copy"><a href="#">fgfg!</a></p>
+    </article>
+  </section>
+</div>

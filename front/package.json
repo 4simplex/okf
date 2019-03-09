@@ -20,8 +20,16 @@
     "@angular/platform-browser": "~7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
+    "@types/chart.js": "^2.7.46",
+    "angular2-flash-messages": "^3.0.1",
+    "angular2-jwt": "^0.2.3",
+    "chart.js": "^2.7.3",
     "core-js": "^2.5.4",
+    "ng2-charts": "^1.6.0",
+    "ngx-bootstrap": "^3.2.0",
+    "ngx-pagination": "^3.2.1",
     "rxjs": "~6.3.3",
+    "rxjs-compat": "^6.4.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
