@@ -1,3 +1,22 @@
-<p>
-  profile works!
-</p>
+<div *ngIf="user" class="container">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <h2>{{ appLiterals.user.profile }}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row mb-3 mt-2">
+        <h5>{{ user.name }}</h5>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="list-group">
+            <li class="list-group-item"> <strong>{{ appLiterals.user.username }}: </strong> {{user.username}}</li>
+            <li class="list-group-item"> <strong>{{ appLiterals.user.email }}: </strong> {{user.email}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

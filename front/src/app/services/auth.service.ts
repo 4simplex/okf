@@ -13,8 +13,8 @@ export class AuthService {
   registerUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/api/register', user, {headers: headers}) // DEV
-    // return this.http.post('api/register', user, {headers: headers}) // PROD
+    // return this.http.post('http://localhost:3000/api/register', user, {headers: headers}) // DEV
+    return this.http.post('api/register', user, {headers: headers}) // PROD
       .pipe(map(res => res.json()));
   }
 

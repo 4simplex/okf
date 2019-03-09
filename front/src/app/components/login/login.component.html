@@ -1,3 +1,33 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <h2>{{ appLiterals.login.loginTitle }}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row mb-3 mt-2">
+        <h5>{{ this.appLiterals.user.account }}</h5>
+      </div>
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <form #loginForm="ngForm" (submit)="this.onLoginSubmit()" class="form-group">
+
+              <div class="form-group">
+                <label>{{ appLiterals.user.username }}</label>
+                <input type="text" [(ngModel)]="username" name="username" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label>{{ appLiterals.user.password }}</label>
+                <input type="password" [(ngModel)]="password" name="password" class="form-control" required>
+              </div>
+
+              <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">{{ this.appLiterals.btnLogin }}</button>
+
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

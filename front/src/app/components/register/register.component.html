@@ -1,3 +1,68 @@
-<p>
-  register works!
-</p>
+<form (submit)="onRegisterSubmit()" class="form-group">
+
+  <div class="form-group">
+    <label>{{ appLiterals.user.name }}</label>
+    <input type="text" [(ngModel)]="name" name="name" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>{{ appLiterals.user.username }}</label>
+    <input type="text" [(ngModel)]="username" name="username" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>{{ appLiterals.user.email }}</label>
+    <input type="text" [(ngModel)]="email" name="email" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>{{ appLiterals.user.password }}</label>
+    <input type="password" [(ngModel)]="password" name="password"class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-primary">{{ this.appLiterals.btnRegister }}</button>
+
+</form>
+<!--<div class="container">
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <h2>{{ this.appLiterals.register.registerTitle }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row mb-3 mt-2">
+          <h5>{{ this.appLiterals.user.account }}</h5>
+        </div>
+        <div class="row mb-5">
+          <div class="col-md-8">
+            <form (submit)="onRegisterSubmit()" class="form-group">
+
+                <div class="form-group">
+                  <label>{{ appLiterals.user.name }}</label>
+                  <input type="text" [(ngModel)]="name" name="name" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label>{{ appLiterals.user.username }}</label>
+                  <input type="text" [(ngModel)]="username" name="username" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label>{{ appLiterals.user.email }}</label>
+                  <input type="text" [(ngModel)]="email" name="email" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label>{{ appLiterals.user.password }}</label>
+                  <input type="password" [(ngModel)]="password" name="password"class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-primary">{{ this.appLiterals.btnRegister }}</button>
+
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>-->

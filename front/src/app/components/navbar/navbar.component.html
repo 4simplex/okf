@@ -1,3 +1,50 @@
-<p>
-  navbar works!
-</p>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" *ngIf="authService.loggedIn()">
+  <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="['/']">{{ this.appLiterals.menu.home }}</a>
+          </li>
+          <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="['/brands']">{{ this.appLiterals.menu.brand }}</a>
+          </li>
+          <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="['/categories']">{{ this.appLiterals.menu.category }}</a>
+          </li>
+          <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="['/providers']">{{ this.appLiterals.menu.provider }}</a>
+          </li>
+          <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="['/products']">{{ this.appLiterals.menu.product }}</a>
+          </li>
+          <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="['/price']">{{ this.appLiterals.menu.price }}</a>
+          </li>
+          <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="['/stock']">{{ this.appLiterals.menu.stock }}</a>
+          </li>
+          <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="['/sale']">{{ this.appLiterals.menu.sale }}</a>
+          </li>
+          <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+            <a class="nav-link" [routerLink]="['/stats']">{{ this.appLiterals.menu.statistic }}</a>
+          </li>
+      </ul>
+  </div>
+
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" *ngIf="authService.loggedIn()">
+    <ul class="navbar-nav ml-auto">
+      <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link" [routerLink]="['/profile']">{{ this.appLiterals.menu.profile }}</a>
+      </li>
+      <li *ngIf="!authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link" [routerLink]="['/login']">{{ this.appLiterals.menu.login }}</a>
+      </li>
+      <li *ngIf="!authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+        <a class="nav-link" [routerLink]="['/register']">{{ this.appLiterals.menu.register }}</a>
+      </li>
+      <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link" (click)="this.onLogoutClick()" href="#">{{ this.appLiterals.menu.logout }}</a>
+        </li>
+    </ul>
+  </div>
+</nav>
