@@ -11,12 +11,12 @@ import { appLiterals } from '../../resources/appLiteral';
 })
 export class NavbarComponent implements OnInit {
   appLiterals;
+  authService: AuthService
 
   constructor(
-    private authService: AuthService,
-    private router: Router,
-    private flashMessage: FlashMessagesService) {
+    private authSrv: AuthService, private router: Router, private flashMessage: FlashMessagesService) {
       this.appLiterals = appLiterals;
+      this.authService = authSrv;
     }
 
   ngOnInit() {
