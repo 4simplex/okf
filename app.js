@@ -18,6 +18,8 @@ const users = require('./routes/users');
 //Port Number
 const port = process.env.PORT || 3000;
 
+app.use(express.json({ extended: true, limit: '50mb' }));
+
 //CORS Middleware
 app.use(cors());
 
@@ -38,6 +40,10 @@ app.use('/api', users);
 //Index Route
 app.get('/', (req, res) => {
     res.send('Invalid Endpoint.');
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 //Start server
