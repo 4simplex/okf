@@ -13,8 +13,6 @@ mongoose.connect(config.database, { useNewUrlParser: true })
 
 const app = express();
 
-const users = require('./routes/users');
-
 //Port Number
 const port = process.env.PORT || 3000;
 
@@ -35,7 +33,9 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
-app.use('/api', users);
+app.use('/api', require('./routes/users'));
+app.use('/api/brand', require('./routes/brand.routes'));
+app.use('/api/product', require('./routes/product.routes'));
 
 //Index Route
 app.get('/', (req, res) => {

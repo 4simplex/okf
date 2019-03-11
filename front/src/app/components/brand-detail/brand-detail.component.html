@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <h2>{{this.appLiterals.brands.brands}}</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" *ngIf="brand">
+      <div class="row mb-3 mt-2">
+        <h5>{{ this.appLiterals.editTitle }} {{ brand.name | uppercase}}</h5>
+      </div>
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <div class="form-group">
+            <input [(ngModel)]="brand.name" type="text" class="form-control mb-3" />
+            <button (click)="goBack()" class="mr-2 btn btn-primary">
+              {{ this.appLiterals.btnBack }}
+            </button>
+            <button (click)="save()" class="btn btn-primary">
+              {{ this.appLiterals.btnSave }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

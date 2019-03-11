@@ -1,0 +1,7 @@
+<div [formGroup]="parentForm" class="form-group">
+  <select formControlName="name" id="brand-selector" class="form-control" (change)="setBrandId($event)">
+    <option value="" disabled selected>{{ appLiterals.selectBrand }}</option>
+    <option *ngFor='let item of httpBrand.brands' [value]="item.name" [id]="item._id">{{ item.name }}
+    </option>
+  </select>
+</div>
