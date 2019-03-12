@@ -36,6 +36,7 @@ require('./config/passport')(passport);
 app.use('/api', require('./routes/users'));
 app.use('/api/brand', require('./routes/brand.routes'));
 app.use('/api/product', require('./routes/product.routes'));
+app.use('/api/category', require('./routes/category.routes'));
 
 //Index Route
 app.get('/', (req, res) => {

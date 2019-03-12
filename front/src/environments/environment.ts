@@ -8,7 +8,8 @@ export const environment = {
   registerUrl: "http://localhost:3000/api/register",
   profileUrl: "http://localhost:3000/api/profile",
   brandUrl: "http://localhost:3000/api/brand",
-  productUrl: "http://localhost:3000/api/product"
+  productUrl: "http://localhost:3000/api/product",
+  categoryUrl: "http://localhost:3000/api/category"
 };
 
 /*

@@ -21,6 +21,10 @@ import { AuthGuard } from './guards/auth.guard';
 import { BrandsComponent } from './components/brands/brands.component';
 import { BrandDetailComponent } from './components/brand-detail/brand-detail.component';
 import { BrandSelectorComponent } from './components/brand-selector/brand-selector.component';
+import { CategoryComponent } from './components/category/category.component';
+import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
+import { CategorySelectorComponent } from './components/category-selector/category-selector.component';
+import { CategoryService } from './services/category.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { BrandSelectorComponent } from './components/brand-selector/brand-select
     RegisterComponent,
     BrandsComponent,
     BrandDetailComponent,
-    BrandSelectorComponent
+    BrandSelectorComponent,
+    CategoryComponent,
+    CategoryDetailComponent,
+    CategorySelectorComponent
   ],
 
   imports: [
@@ -50,7 +57,7 @@ import { BrandSelectorComponent } from './components/brand-selector/brand-select
 
   providers: [
     BrandService,
-    // CategoryService,
+    CategoryService,
     // ProviderService,
     // PriceService,
     ValidateService,
