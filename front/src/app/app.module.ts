@@ -25,7 +25,10 @@ import { CategoryComponent } from './components/category/category.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 import { CategorySelectorComponent } from './components/category-selector/category-selector.component';
 import { CategoryService } from './services/category.service';
-
+import { ProviderService } from './services/provider.service';
+import { ProviderComponent } from './components/provider/provider.component';
+import { ProviderDetailComponent } from './components/provider-detail/provider-detail.component';
+import { ProviderSelectorComponent } from './components/provider-selector/provider-selector.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,10 @@ import { CategoryService } from './services/category.service';
     BrandSelectorComponent,
     CategoryComponent,
     CategoryDetailComponent,
-    CategorySelectorComponent
+    CategorySelectorComponent,
+    ProviderComponent,
+    ProviderDetailComponent,
+    ProviderSelectorComponent
   ],
 
   imports: [
@@ -58,7 +64,7 @@ import { CategoryService } from './services/category.service';
   providers: [
     BrandService,
     CategoryService,
-    // ProviderService,
+    ProviderService,
     // PriceService,
     ValidateService,
     AuthService,

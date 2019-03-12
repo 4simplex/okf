@@ -9,7 +9,8 @@ export const environment = {
   profileUrl: "http://localhost:3000/api/profile",
   brandUrl: "http://localhost:3000/api/brand",
   productUrl: "http://localhost:3000/api/product",
-  categoryUrl: "http://localhost:3000/api/category"
+  categoryUrl: "http://localhost:3000/api/category",
+  providerUrl: "http://localhost:3000/api/provider"
 };
 
 /*

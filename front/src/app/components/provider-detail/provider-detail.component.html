@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <h2>Proveedores - Editar</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" *ngIf="provider">
+      <div class="row mb-3 mt-2">
+        <h5>{{ provider.name | uppercase}} Detalles</h5>
+      </div>
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <form #providerForm="ngForm" (ngSubmit)="save(providerForm)" class="form-group">
+            <input [(ngModel)]="provider.name" type="text" name="name" class="form-control mb-3" required/>
+            <input [(ngModel)]="provider.info" type="text" name="info" class="form-control mb-3" />
+            <button type="button" (click)="goBack()" class="mr-2 btn btn-primary">Volver</button>
+            <button type="submit" [disabled]="!providerForm.valid" class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

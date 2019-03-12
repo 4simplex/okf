@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <h2>Proveedores</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row mb-3 mt-2">
+        <h5>Crear Proveedor</h5>
+      </div>
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <form #providerForm="ngForm" (ngSubmit)="addProvider(providerForm)" class="form-group">
+            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="selectedProvider._id">
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="selectedProvider.name" placeholder="Nombre" class="form-control mb-3" required>
+            <input type="text" name="info" #info="ngModel" [(ngModel)]="selectedProvider.info" placeholder="Información del Proveedor" class="form-control mb-3">
+            <button [disabled]="!providerForm.valid" class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row mb-3 mt-2">
+            <div class="col-md-12">
+              <h5>Proveedores Creados</h5>
+            </div>
+          </div>
+          <div class="row align-items-center provider-row" *ngFor="let provider of providers | paginate: {itemsPerPage:10, currentPage: actualPage}">
+            <div class="col-md-6 ">
+              <h4>{{ provider.name }}</h4>
+            </div>
+            <div class="col-md-4 ">
+              <h4>{{ provider.info }}</h4>
+            </div>
+            <div class="col-md-1 ">
+              <a routerLink="/providers/{{provider._id}} " class="btn btn-primary ">Editar</a>
+            </div>
+            <div class="col-md-1 ">
+              <a (click)="deleteProvider(provider._id) " class="btn btn-danger ">Eliminar</a>
+            </div>
+          </div>
+          <div class="row">
+            <pagination-controls (pageChange)="actualPage = $event" autoHide="true" responsive="true" previousLabel="Previa" nextLabel="Próxima"
+              screenReaderPaginationLabel="Paginación" screenReaderPageLabel="Página" screenReaderCurrentLabel="Estas en la página"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

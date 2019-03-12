@@ -1,0 +1,12 @@
+<div [formGroup]="parentForm" class="form-group">
+  <select formControlName="name" id="provider-selector" class="form-control" (change)="setProviderId($event)">
+    <option value="" disabled selected>Seleccione Proveedor</option>
+    
+    <option *ngFor='let provider of providerService.providers' 
+      [value]="provider.name" 
+      [id]="provider._id">
+        {{ provider.name }}
+    </option>
+    
+  </select>
+</div>

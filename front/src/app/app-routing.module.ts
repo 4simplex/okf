@@ -9,6 +9,8 @@ import { BrandsComponent } from './components/brands/brands.component';
 import { BrandDetailComponent } from './components/brand-detail/brand-detail.component';
 import { CategoryComponent } from './components/category/category.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
+import { ProviderComponent } from './components/provider/provider.component';
+import { ProviderDetailComponent } from './components/provider-detail/provider-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'brand/:id', component: BrandDetailComponent, canActivate: [AuthGuard] },
   { path: 'categories', component: CategoryComponent, canActivate: [AuthGuard] },
   { path: 'categories/:id', component: CategoryDetailComponent, canActivate: [AuthGuard] },
+  { path: 'providers', component: ProviderComponent, canActivate: [AuthGuard] },
+  { path: 'providers/:id', component: ProviderDetailComponent, canActivate: [AuthGuard] },
 
 ];
 
