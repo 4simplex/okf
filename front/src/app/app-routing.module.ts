@@ -13,6 +13,8 @@ import { ProviderComponent } from './components/provider/provider.component';
 import { ProviderDetailComponent } from './components/provider-detail/provider-detail.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { PriceComponent } from './components/price/price.component';
+import { PriceDetailComponent } from './components/price-detail/price-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,6 +29,8 @@ const routes: Routes = [
   { path: 'providers/:id', component: ProviderDetailComponent, canActivate: [AuthGuard] },
   { path: 'products', component: ProductComponent, canActivate: [AuthGuard] },
   { path: 'product/:id', component: ProductDetailComponent, canActivate: [AuthGuard] },
+  { path: 'price', component: PriceComponent, canActivate: [AuthGuard] },
+  { path: 'price/:id', component: PriceDetailComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

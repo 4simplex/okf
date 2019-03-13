@@ -33,6 +33,10 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductSelectorComponent } from './components/product-selector/product-selector.component';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
+import { PriceComponent } from './components/price/price.component';
+import { PriceDetailComponent } from './components/price-detail/price-detail.component';
+import { PriceService } from './services/price.service';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,10 @@ import { UploadImageComponent } from './components/upload-image/upload-image.com
     ProductComponent,
     ProductDetailComponent,
     ProductSelectorComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    PriceComponent,
+    PriceDetailComponent,
+    SpinnerComponent
   ],
 
   imports: [
@@ -74,7 +81,7 @@ import { UploadImageComponent } from './components/upload-image/upload-image.com
     BrandService,
     CategoryService,
     ProviderService,
-    // PriceService,
+    PriceService,
     ValidateService,
     AuthService,
     AuthGuard

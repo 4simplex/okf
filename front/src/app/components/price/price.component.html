@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <h2>Precios</h2>
+    </div>
+  </div>
+  <form [formGroup]="priceForm" (ngSubmit)="addPrice()" class="row price-form">
+    <div class="col-md-12">
+      <div class="row mb-3 mt-2">
+        <h5>Agregar precios de producto</h5>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+            <div class="form-group searchContainer">
+              <input type="text" class="form-control" (keyup)="searchProduct($event)" capitalize placeholder="Buscar Producto...." [value]="inputSearch" />
+              <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="loading">
+                <app-spinner>
+                </app-spinner>
+              </div>
+              <ul *ngIf="searchResult" class="searchResult">
+                <li *ngFor="let result of searchResult">
+                  <a href="" (click)="addSearchResult(result, $event)">{{ result.brand.name }} - {{ result.name }} </a>
+                </li>
+              </ul>
+            </div>
+
+          <app-provider-selector [parentForm]="priceForm.get('provider')"></app-provider-selector>
+
+          <div class="form-group">
+            <input type="text" formControlName="purchasePrice" placeholder="Precio de Compra x Unidad" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <input type="text" formControlName="salePrice" placeholder="Precio de Venta x Unidad" class="form-control" />
+          </div>
+
+          <div class="form-group">
+            <p>{{ prodCode }}</p>
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-primary mr-1">Crear</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div *ngIf="productFileImage">
+            <img [src]="'data:image/jpg;base64,'+productFileImage" [ngStyle]="{'width': '300px'}" />
+          </div>
+          <div *ngIf="!productFileImage">
+            <img [src]="'data:image/jpg;base64,'+noImage" [ngStyle]="{'width': '300px'}" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row mb-3 mt-2">
+        <div class="col-md-12">
+          <h5>Precios registrados</h5>
+        </div>
+      </div>
+
+      <div class="row align-items-center price-row" *ngFor="let price of priceService.prices | paginate: {itemsPerPage:10, currentPage: actualPage}">
+
+        <div class="col-md-1">
+          <div *ngIf="price.productForm.product.fileImg">
+            <img [src]="'data:image/jpg;base64,'+price.productForm.product.fileImg" class="img-fluid" />
+          </div>
+          <div *ngIf="!price.productForm.product.fileImg">
+            <img [src]="'data:image/jpg;base64,'+noImage" class="img-fluid" />
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <h4><strong>{{ price.productForm.product.brand.name }}</strong> - {{ price.productForm.product.name }}</h4>
+          <p>
+            <strong>Marca</strong> {{ price.productForm.product.brand.name }}
+            <strong>Proveedor</strong> {{ price.provider.name }}
+            <strong>Categoría</strong> {{ price.productForm.product.category.name }}
+            <strong>Código</strong> {{ price.productCode }}
+          </p>
+        </div>
+
+        <div class="col-md-2">
+          <p><strong>Precio Compra:</strong><br> {{ price.purchasePrice | currency }}</p>
+        </div>
+        <div class="col-md-2">
+          <p><strong>Precio Venta:</strong><br> {{ price.salePrice  | currency}}</p>
+        </div>
+
+
+        <div class="col-md-1">
+          <a routerLink="/price/{{price._id}}" class="btn btn-primary">Editar</a>
+        </div>
+        <div class="col-md-1">
+          <button (click)="deletePrice(price)" class="btn btn-danger">Eliminar</button>
+        </div>
+
+      </div>
+      <div class="row">
+        <pagination-controls (pageChange)="actualPage = $event" autoHide="true" responsive="true" previousLabel="Previa" nextLabel="Próxima"
+          screenReaderPaginationLabel="Paginación" screenReaderPageLabel="Página" screenReaderCurrentLabel="Estas en la página"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -6,5 +6,6 @@ export const environment = {
   brandUrl: "api/brand",
   productUrl: "api/product",
   categoryUrl: "api/category",
-  providerUrl: "api/provider"
+  providerUrl: "api/provider",
+  priceUrl: "api/price"
 };
