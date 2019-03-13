@@ -11,6 +11,8 @@ import { CategoryComponent } from './components/category/category.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 import { ProviderComponent } from './components/provider/provider.component';
 import { ProviderDetailComponent } from './components/provider-detail/provider-detail.component';
+import { ProductComponent } from './components/product/product.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,7 +25,8 @@ const routes: Routes = [
   { path: 'categories/:id', component: CategoryDetailComponent, canActivate: [AuthGuard] },
   { path: 'providers', component: ProviderComponent, canActivate: [AuthGuard] },
   { path: 'providers/:id', component: ProviderDetailComponent, canActivate: [AuthGuard] },
-
+  { path: 'products', component: ProductComponent, canActivate: [AuthGuard] },
+  { path: 'product/:id', component: ProductDetailComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

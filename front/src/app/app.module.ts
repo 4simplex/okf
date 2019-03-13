@@ -29,6 +29,11 @@ import { ProviderService } from './services/provider.service';
 import { ProviderComponent } from './components/provider/provider.component';
 import { ProviderDetailComponent } from './components/provider-detail/provider-detail.component';
 import { ProviderSelectorComponent } from './components/provider-selector/provider-selector.component';
+import { ProductComponent } from './components/product/product.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductSelectorComponent } from './components/product-selector/product-selector.component';
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +50,11 @@ import { ProviderSelectorComponent } from './components/provider-selector/provid
     CategorySelectorComponent,
     ProviderComponent,
     ProviderDetailComponent,
-    ProviderSelectorComponent
+    ProviderSelectorComponent,
+    ProductComponent,
+    ProductDetailComponent,
+    ProductSelectorComponent,
+    UploadImageComponent
   ],
 
   imports: [

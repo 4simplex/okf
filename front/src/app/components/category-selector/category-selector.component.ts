@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../models/category-model';
 import { FormGroup, FormControl } from '@angular/forms';
+import { appLiterals } from '../../resources/appLiteral';
 
 @Component({
   selector: 'app-category-selector',
@@ -10,10 +11,12 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class CategorySelectorComponent implements OnInit {
   @Input('parentForm')
-  httpCategory: CategoryService
   public parentForm: FormGroup;
+  httpCategory: CategoryService;
+  appLiterals;
 
   constructor(private http: CategoryService) { 
+    this.appLiterals = appLiterals;
     this.httpCategory = http;
   }
 

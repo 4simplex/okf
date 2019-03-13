@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <h2>Productos</h2>
+    </div>
+  </div>
+  <form [formGroup]="productForm" (ngSubmit)="modifyProduct()" class="row" class="product-form">
+    <div class="col-md-12">
+      <div class="row mb-3 mt-2">
+        <h5>Editar Producto</h5>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <app-category-selector [parentForm]="productForm.get('category')"></app-category-selector>
+
+          <app-brand-selector [parentForm]="productForm.get('brand')"></app-brand-selector>
+
+          <div class="form-group">
+            <input type="text" formControlName="name" placeholder="Nombre" class="form-control" />
+            <div *ngIf="productForm.get('name').touched && productForm.get('name').invalid">
+              <p *ngIf="!productForm.get('name').errors.valid">
+                Debe escribir un nombre
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <textarea placeholder="Descripción" id="description" formControlName="description" class="form-control"></textarea>
+          </div>
+
+          <div *ngIf="!initImg">
+            <app-upload-image [parentForm]="productForm.get('photo')" (valueChange)="displayCounter($event)"></app-upload-image>
+          </div>
+
+          <div *ngIf="initImg">
+            <img [src]="'data:image/jpg;base64,'+initImg" [ngStyle]="{'width': '150px', 'margin-top': '20px', 'display': 'block'}" />
+            <button class="btn btn-primary mt-4" (click)="deletePrevImg()">Eliminar Foto</button>
+          </div>
+
+          <div class="mt-5">
+            <button type="button" (click)="goBack()" class="btn btn-primary">Cancelar</button>
+            <button [disabled]="!productForm.valid" class="btn btn-primary ml-3">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

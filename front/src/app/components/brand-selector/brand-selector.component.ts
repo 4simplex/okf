@@ -12,9 +12,9 @@ import { appLiterals } from '../../resources/appLiteral';
 export class BrandSelectorComponent implements OnInit {
   @Input('parentForm')
   public parentForm: FormGroup;
-  httpBrand: BrandService
-
+  httpBrand: BrandService;
   appLiterals;
+  
   constructor(private http: BrandService) {
     this.appLiterals = appLiterals;
     this.httpBrand = http;

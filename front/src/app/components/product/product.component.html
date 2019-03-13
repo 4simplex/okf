@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <h2>Productos</h2>
+    </div>
+  </div>
+  <form [formGroup]="productForm" (ngSubmit)="addNewProduct()" class="row product-form">
+    <div class="col-md-12">
+      <div class="row mb-3 mt-2">
+        <h5>Crear Producto</h5>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <app-category-selector [parentForm]="productForm.get('category')"></app-category-selector>
+
+          <app-brand-selector [parentForm]="productForm.get('brand')"></app-brand-selector>
+
+          <div class="form-group">
+            <input type="text" formControlName="name" placeholder="Nombre" class="form-control" />
+            <div *ngIf="productForm.get('name').touched && productForm.get('name').invalid">
+              <p *ngIf="!productForm.get('name').errors.valid">
+                Debe escribir un nombre
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <textarea placeholder="Descripción" id="description" formControlName="description" class="form-control"></textarea>
+          </div>
+          <app-upload-image [parentForm]="productForm.get('photo')" (valueChange)="displayProductImage($event)"></app-upload-image>
+
+          <button [disabled]="!productForm.valid" class="btn btn-primary">Crear</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row mb-3 mt-2">
+        <div class="col-md-12">
+          <h5>Productos registrados</h5>
+        </div>
+      </div>
+      <div class="row align-items-center product-row" *ngFor="let product of productService.products | paginate: {itemsPerPage:10, currentPage: actualPage}">
+        <div class="col-md-1">
+          <div *ngIf="product.fileImg">
+            <img [src]="'data:image/jpg;base64,'+product.fileImg" class="img-fluid" />
+          </div>
+          <div *ngIf="!product.fileImg">
+            <img [src]="'data:image/jpg;base64,'+noImage" class="img-fluid" />
+          </div>
+        </div>
+        <div class="col-md-5">
+          <h4>{{ product.name }}</h4>
+        </div>
+        <div class="col-md-2">
+          <p><strong>Marca:</strong><br> {{ product.brand.name }}</p>
+
+        </div>
+        <div class="col-md-2">
+          <p><strong>Categoría:</strong><br> {{ product.category.name }}</p>
+        </div>
+        <div class="col-md-1">
+          <a routerLink="/product/{{product._id}}" class="btn btn-primary">Editar</a>
+        </div>
+        <div class="col-md-1">
+          <a (click)="deleteProduct(product._id)" class="btn btn-danger">Eliminar</a>
+        </div>
+      </div>
+      <div class="row">
+        <pagination-controls (pageChange)="actualPage = $event" autoHide="true" responsive="true" previousLabel="Previa" nextLabel="Próxima"
+          screenReaderPaginationLabel="Paginación" screenReaderPageLabel="Página" screenReaderCurrentLabel="Estas en la página"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

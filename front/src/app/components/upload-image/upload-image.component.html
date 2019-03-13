@@ -1,0 +1,6 @@
+<div [formGroup]="parentForm" class="form-group">
+  <input type="file" (change)="readImgUrl($event)" formControlName="name" class="form-control-file" accept="image/png, image/jpeg">
+  <div *ngIf="fileImg">
+    <img [src]="'data:image/jpg;base64,'+fileImg" [ngStyle]="{'width': '150px', 'margin-top': '20px'}" />
+  </div>
+</div>
