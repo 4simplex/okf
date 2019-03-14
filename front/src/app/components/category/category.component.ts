@@ -16,6 +16,7 @@ export class CategoryComponent implements OnInit {
   selectedCategory: Category;
   actualPage: Number = 1;
   appLiterals;
+  
   constructor(private categoryService: CategoryService, private productService: ProductService) {
     this.selectedCategory = new Category();
     this.appLiterals = appLiterals;

@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <h2>{{ appLiterals.stock.stock }}</h2>
+    </div>
+  </div>
+  <div class="row stock-form">
+    <div class="col-md-12">
+      <div class="row mb-3 mt-2">
+        <h5>{{ appLiterals.stock.registeredStock }}</h5>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="row align-items-center stock-row" *ngFor="let price of priceService.prices | paginate: {itemsPerPage:10, currentPage: actualPage}">
+
+            <div class="col-md-1">
+              <div *ngIf="price.productForm.product.fileImg">
+                <img [src]="'data:image/jpg;base64,'+price.productForm.product.fileImg" class="img-fluid" />
+              </div>
+              <div *ngIf="!price.productForm.product.fileImg">
+                <img [src]="'data:image/jpg;base64,'+this.noImage" class="img-fluid" />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <h4><strong>{{ price.productForm.product.brand.name }}</strong> - {{ price.productForm.product.name }}</h4>
+              <p>
+                <strong>{{ appLiterals.price.purchasePriceShort }}</strong> {{ price.purchasePrice | currency }}
+                <strong>{{ appLiterals.price.salePriceShort }}</strong> {{ price.salePrice  | currency}}
+                <strong>{{ appLiterals.category.cagtegory }}</strong> {{ price.productForm.product.category.name }}
+              </p>
+            </div>
+
+            <div class="col-md-3">
+              <p>
+                <strong>{{ appLiterals.stock.stock }}</strong><br>
+                <input type="text" class="form-control" [(ngModel)]="price.stock" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" />
+              </p>
+            </div>
+
+            <div class="col-md-2">
+              <button (click)="updateStock(price)" class="btn btn-primary">{{ appLiterals.btnSave }}</button>
+            </div>
+
+          </div>
+          <div class="row">
+            <pagination-controls (pageChange)="actualPage = $event" autoHide="true" responsive="true" previousLabel="{{appLiterals.paginationTexts.previous}}"
+              nextLabel="{{appLiterals.paginationTexts.next}}" screenReaderPaginationLabel="{{appLiterals.paginationTexts.pagination}}"
+              screenReaderPageLabel="{{appLiterals.paginationTexts.page}}" screenReaderCurrentLabel="{{appLiterals.paginationTexts.currentPage}}"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

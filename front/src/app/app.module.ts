@@ -37,6 +37,7 @@ import { PriceComponent } from './components/price/price.component';
 import { PriceDetailComponent } from './components/price-detail/price-detail.component';
 import { PriceService } from './services/price.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { StockComponent } from './components/stock/stock.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     UploadImageComponent,
     PriceComponent,
     PriceDetailComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    StockComponent
   ],
 
   imports: [
