@@ -1,0 +1,25 @@
+.searchResult {
+    width: 200%;
+    border:1px solid rgb(243, 243, 243);
+    padding: 0px !important;
+    margin-top: 10px;
+}
+
+.searchResult li {
+    list-style-type: none;
+    text-align: left;
+    border-bottom: 1px solid rgb(243, 243, 243);
+}
+
+.searchResult li a, .searchResult li p{
+    padding: 15px 10px;
+    width: 100%;
+    text-align: left;
+    display: block;
+}
+
+.searchResult li a:hover{
+    text-decoration: none;
+    background-color: rgb(243, 243, 243);
+}
+

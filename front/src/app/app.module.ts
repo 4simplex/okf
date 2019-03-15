@@ -38,6 +38,7 @@ import { PriceDetailComponent } from './components/price-detail/price-detail.com
 import { PriceService } from './services/price.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { StockComponent } from './components/stock/stock.component';
+import { SaleComponent } from './components/sale/sale.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { StockComponent } from './components/stock/stock.component';
     PriceComponent,
     PriceDetailComponent,
     SpinnerComponent,
-    StockComponent
+    StockComponent,
+    SaleComponent
   ],
 
   imports: [

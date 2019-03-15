@@ -22,10 +22,10 @@
           <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
             <a class="nav-link" [routerLink]="['/stock']">{{ this.appLiterals.menu.stock }}</a>
           </li>
-          <!--<li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+          <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
             <a class="nav-link" [routerLink]="['/sale']">{{ this.appLiterals.menu.sale }}</a>
           </li>
-          <li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+          <!--<li *ngIf="authService.loggedIn()" class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
             <a class="nav-link" [routerLink]="['/stats']">{{ this.appLiterals.menu.statistic }}</a>
           </li> -->
       </ul>

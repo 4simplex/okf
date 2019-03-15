@@ -11,7 +11,8 @@ export const environment = {
   productUrl: "http://localhost:3000/api/product",
   categoryUrl: "http://localhost:3000/api/category",
   providerUrl: "http://localhost:3000/api/provider",
-  priceUrl: "http://localhost:3000/api/price"
+  priceUrl: "http://localhost:3000/api/price",
+  saleUrl: "http://localhost:3000/api/sale"
 };
 
 /*

@@ -1,0 +1,91 @@
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <h2>{{appLiterals.sales.sales }}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row mb-3 mt-2">
+        <h5>{{ appLiterals.sales.searchProductTitle }}:</h5><br>
+
+        <input type="text" class="form-control" (keyup)="searchProduct($event)" capitalize />
+        <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="loading">
+          <app-spinner>
+          </app-spinner>
+        </div>
+        <ul *ngIf="prices" class="searchResult">
+          <li *ngFor="let price of prices">
+            <p *ngIf="price.stock < 1">{{ price.productCode }} -
+              {{ price.productForm.product.name }} - {{ price.salePrice | currency }} - <strong>Stock: {{price.stock}}</strong></p>
+            <a href="" *ngIf="price.stock >= 1 " (click)="addSearchResult(price, $event)">{{ price.productCode }} -
+                  {{ price.productForm.product.name }} - {{ price.salePrice | currency }} - Stock: {{price.stock}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="row mb-5">
+        <div class="col-md-8" *ngIf="priceFound">
+          <div class="card" style="width: 18rem;">
+            <div *ngIf="priceFound.productForm.product.fileImg">
+              <img [src]="'data:image/jpg;base64,'+priceFound.productForm.product.fileImg" class="card-img-top" />
+            </div>
+            <div *ngIf="!priceFound.productForm.product.fileImg">
+              <img [src]="'data:image/jpg;base64,'+noImage" class="card-img-top" />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ priceFound.productForm.product.name }}</h5>
+              <p class="card-text"><strong>Código:</strong> {{ priceFound.productCode }}<br> <strong>Stock:</strong> {{ priceFound.stock
+                }}
+                <br> <strong>Precio:</strong> {{ priceFound.salePrice | currency }}
+              </p>
+              <p class="card-text">Cantidad a vender: <input type="text" [(ngModel)]="units" style="width: 50px" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+                  (keyup)="changeUnits(priceFound.stock)">
+              </p>
+              <button type="button" class="btn btn-primary" (click)="addProduct(priceFound)">Agregar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <h5 style="margin-top:10px; margin-bottom:20px;">{{ appLiterals.sales.productsAddedTitle }}:</h5>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row" *ngFor="let product of products">
+            <div class="col-md-2">
+              <div *ngIf="product.productForm.product.fileImg">
+                <img [src]="'data:image/jpg;base64,'+product.productForm.product.fileImg" class="card-img-top" />
+              </div>
+              <div *ngIf="!product.productForm.product.fileImg">
+                <img [src]="'data:image/jpg;base64,'+noImage" class="card-img-top" />
+              </div>
+            </div>
+
+            <div class="col-md-5">
+              <h4>{{ product.productForm.product.name }}</h4>
+              <p><strong>{{appLiterals.sales.priceUnit}}:</strong>{{ product.salePrice | currency }} <br><strong>{{appLiterals.labelCategory}}:</strong> {{ product.productForm.product.category.name
+                }} <br><strong>{{appLiterals.labelStock}}:</strong> {{ product.stock }} </p>
+            </div>
+
+            <div class="col-md-2">
+              <p>{{ appLiterals.labelUnits }}: <input type="text" style="width: 50px" [(ngModel)]="product.units" (keyup)="modifyProduct(product, $event)"></p>
+            </div>
+            <div class="col-md-2">
+              <p><strong>{{ appLiterals.labelPrice }}:</strong><br> {{ product.priceForUnits | currency }}</p>
+            </div>
+
+            <div class="col-md-1">
+              <button type="button" class="btn btn-danger" (click)="deleteProduct(product)">{{ appLiterals.btnDelete }}</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 mt-5" *ngIf="products.length > 0">
+
+          <h4 class="text-right">{{ appLiterals.labelTotal }}: {{this.total | currency}}</h4>
+          <button type="button" class="btn btn-primary float-right" (click)="sell()">{{ appLiterals.sales.btnSell }}</button>
+          <button class="btn btn-default float-right mr-3" (click)="cancelSell()">{{ appLiterals.btnCancel }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
