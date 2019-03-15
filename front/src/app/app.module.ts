@@ -39,6 +39,8 @@ import { PriceService } from './services/price.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { StockComponent } from './components/stock/stock.component';
 import { SaleComponent } from './components/sale/sale.component';
+import { StatsComponent } from './components/stats/stats.component';
+import { ChartgraphComponent } from './components/chartgraph/chartgraph.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { SaleComponent } from './components/sale/sale.component';
     PriceDetailComponent,
     SpinnerComponent,
     StockComponent,
-    SaleComponent
+    SaleComponent,
+    StatsComponent,
+    ChartgraphComponent
   ],
 
   imports: [
