@@ -26,7 +26,7 @@
               <h5>{{ appLiterals.category.registeredCategory }}</h5>
             </div>
           </div>
-          <div class="row align-items-center category-row" *ngFor="let category of categories | paginate: {itemsPerPage:10, currentPage: actualPage}">
+          <div class="row align-items-center category-row" *ngFor="let category of categories | paginate: {itemsPerPage:10, currentPage: currentPage}">
             <div class="col-md-10">
               <h4>{{ category.name }}</h4>
             </div>
@@ -39,7 +39,7 @@
 
           </div>
           <div class="row">
-            <pagination-controls (pageChange)="actualPage = $event" autoHide="true" responsive="true" previousLabel="{{appLiterals.paginationTexts.previous}}"
+            <pagination-controls (pageChange)="currentPage = $event" autoHide="true" responsive="true" previousLabel="{{appLiterals.paginationTexts.previous}}"
               nextLabel="{{appLiterals.paginationTexts.next}}" screenReaderPaginationLabel="{{appLiterals.paginationTexts.pagination}}"
               screenReaderPageLabel="{{appLiterals.paginationTexts.page}}" screenReaderCurrentLabel="{{appLiterals.paginationTexts.currentPage}}"></pagination-controls>
           </div>

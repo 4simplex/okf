@@ -19,7 +19,7 @@ export class StatsComponent implements OnInit {
   sells;
   chartLabels: any[];
   dataSell;
-  actualPage: Number = 1;
+  currentPage: Number = 1;
 
   constructor(private saleService: SaleService) { }
 

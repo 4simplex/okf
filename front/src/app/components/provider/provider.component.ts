@@ -12,7 +12,7 @@ import { RemoveWhiteSpaces } from '../../helpers/customValidators';
 export class ProviderComponent implements OnInit {
   selectedProvider: Provider;
   providers: Provider[];
-  actualPage: Number = 1;
+  currentPage: Number = 1;
   constructor(private providerService: ProviderService) {
     this.selectedProvider = new Provider();
   }

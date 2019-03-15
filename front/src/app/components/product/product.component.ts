@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
   productForm: FormGroup;
   @ViewChild(UploadImageComponent)
   private uploadChild: UploadImageComponent;
-  actualPage: Number = 1;
+  currentPage: Number = 1;
   noImage = getNoImage();
   productService: ProductService
 

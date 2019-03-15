@@ -43,7 +43,7 @@
           <h5>Productos registrados</h5>
         </div>
       </div>
-      <div class="row align-items-center product-row" *ngFor="let product of productService.products | paginate: {itemsPerPage:10, currentPage: actualPage}">
+      <div class="row align-items-center product-row" *ngFor="let product of productService.products | paginate: {itemsPerPage:10, currentPage: currentPage}">
         <div class="col-md-1">
           <div *ngIf="product.fileImg">
             <img [src]="'data:image/jpg;base64,'+product.fileImg" class="img-fluid" />
@@ -70,7 +70,7 @@
         </div>
       </div>
       <div class="row">
-        <pagination-controls (pageChange)="actualPage = $event" autoHide="true" responsive="true" previousLabel="Previa" nextLabel="Próxima"
+        <pagination-controls (pageChange)="currentPage = $event" autoHide="true" responsive="true" previousLabel="Previa" nextLabel="Próxima"
           screenReaderPaginationLabel="Paginación" screenReaderPageLabel="Página" screenReaderCurrentLabel="Estas en la página"></pagination-controls>
       </div>
     </div>

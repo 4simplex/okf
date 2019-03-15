@@ -27,7 +27,7 @@
               <h5>Proveedores Creados</h5>
             </div>
           </div>
-          <div class="row align-items-center provider-row" *ngFor="let provider of providers | paginate: {itemsPerPage:10, currentPage: actualPage}">
+          <div class="row align-items-center provider-row" *ngFor="let provider of providers | paginate: {itemsPerPage:10, currentPage: currentPage}">
             <div class="col-md-6 ">
               <h4>{{ provider.name }}</h4>
             </div>
@@ -42,7 +42,7 @@
             </div>
           </div>
           <div class="row">
-            <pagination-controls (pageChange)="actualPage = $event" autoHide="true" responsive="true" previousLabel="Previa" nextLabel="Próxima"
+            <pagination-controls (pageChange)="currentPage = $event" autoHide="true" responsive="true" previousLabel="Previa" nextLabel="Próxima"
               screenReaderPaginationLabel="Paginación" screenReaderPageLabel="Página" screenReaderCurrentLabel="Estas en la página"></pagination-controls>
           </div>
         </div>

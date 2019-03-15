@@ -62,7 +62,7 @@
         </div>
       </div>
 
-      <div class="row align-items-center price-row" *ngFor="let price of priceService.prices | paginate: {itemsPerPage:10, currentPage: actualPage}">
+      <div class="row align-items-center price-row" *ngFor="let price of priceService.prices | paginate: {itemsPerPage:10, currentPage: currentPage}">
 
         <div class="col-md-1">
           <div *ngIf="price.productForm.product.fileImg">
@@ -100,7 +100,7 @@
 
       </div>
       <div class="row">
-        <pagination-controls (pageChange)="actualPage = $event" autoHide="true" responsive="true" previousLabel="Previa" nextLabel="Próxima"
+        <pagination-controls (pageChange)="currentPage = $event" autoHide="true" responsive="true" previousLabel="Previa" nextLabel="Próxima"
           screenReaderPaginationLabel="Paginación" screenReaderPageLabel="Página" screenReaderCurrentLabel="Estas en la página"></pagination-controls>
       </div>
     </div>

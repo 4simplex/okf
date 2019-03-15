@@ -13,7 +13,7 @@ export class StockComponent implements OnInit {
   noImage = getNoImage();
   appLiterals;
   priceService: PriceService;
-  actualPage: Number = 1;
+  currentPage: Number = 1;
 
   constructor(private priceSrv: PriceService) {
     this.appLiterals = appLiterals;

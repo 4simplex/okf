@@ -14,7 +14,7 @@ import { appLiterals } from '../../resources/appLiteral';
 export class CategoryComponent implements OnInit {
   categories: Category[];
   selectedCategory: Category;
-  actualPage: Number = 1;
+  currentPage: Number = 1;
   appLiterals;
   
   constructor(private categoryService: CategoryService, private productService: ProductService) {

@@ -14,7 +14,7 @@ import { appLiterals } from '../../resources/appLiteral';
 export class BrandsComponent implements OnInit {
   brands: Brand[];
   selectedBrand: Brand;
-  actualPage: Number = 1;
+  currentPage: Number = 1;
   appLiterals;
 
   constructor(private brandService: BrandService, private productService: ProductService) {

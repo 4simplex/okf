@@ -16,7 +16,7 @@ export class PriceComponent implements OnInit {
   priceForm: FormGroup;
   noImage = getNoImage();
   prodCode: string;
-  actualPage: Number = 1;
+  currentPage: Number = 1;
   productFileImage = '';
   loading = false;
   searchResult;

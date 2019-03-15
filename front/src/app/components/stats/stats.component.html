@@ -49,7 +49,7 @@
         </div>
       </div>
   
-      <div class="row align-items-center stat-row" *ngFor="let sell of sells | paginate: {itemsPerPage:10, currentPage: actualPage}">
+      <div class="row align-items-center stat-row" *ngFor="let sell of sells | paginate: {itemsPerPage:10, currentPage: currentPage}">
   
         <div class="col-md-1">
           <p>{{sell.saleDate }}</p>
@@ -74,7 +74,7 @@
         </div>
       </div>
       <div class="row">
-        <pagination-controls (pageChange)="actualPage = $event" autoHide="true" responsive="true" previousLabel="Previa" nextLabel="Próxima"
+        <pagination-controls (pageChange)="currentPage = $event" autoHide="true" responsive="true" previousLabel="Previa" nextLabel="Próxima"
           screenReaderPaginationLabel="Paginación" screenReaderPageLabel="Página" screenReaderCurrentLabel="Estas en la página"></pagination-controls>
       </div>
     </div>
