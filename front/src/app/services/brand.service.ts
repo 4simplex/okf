@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-
 import { Brand } from '../models/brand-model';
+import { AuthService } from './auth.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,11 +14,13 @@ const httpOptions = {
 export class BrandService {
   brands: Brand[];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   /** GET brands from the server */
   getBrands(): Observable<Brand[]> {
-    return this.http.get<Brand[]>(environment.brandUrl)
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+
+    return this.http.get<Brand[]>(`${environment.brandUrl}/user/${userId}`)
       .pipe(
         // tap(_ => console.info('Fetched brands')),
         catchError(this.handleError('getBrands', []))
@@ -65,6 +66,9 @@ export class BrandService {
 
   /** POST: add a new brand to the server */
   addBrand(brand: Brand): Observable<Brand> {
+    const user = JSON.parse(localStorage.getItem('user'));
+    brand.user = user.id;
+
     return this.http.post<Brand>(environment.brandUrl, brand, httpOptions).pipe(
       // tap((brand: Brand) => console.info(`Added brand w/ id=${brand._id}`)),
       catchError(this.handleError<Brand>('addBrand'))

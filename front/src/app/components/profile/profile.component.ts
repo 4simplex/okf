@@ -13,10 +13,7 @@ export class ProfileComponent implements OnInit {
   user: User;
   appLiterals;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {
+  constructor(private authService: AuthService, private router: Router) {
     this.appLiterals = appLiterals;
   }
 

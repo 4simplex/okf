@@ -4,7 +4,7 @@ const Price = require('../models/price');
 const brandCtrl = {};
 
 brandCtrl.getBrands = async (req, res) => {
-    const brands = await Brand.find();
+    const brands = await Brand.find({ user: req.params.userId });
     res.json(brands);
 }
 

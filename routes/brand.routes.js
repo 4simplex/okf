@@ -3,7 +3,7 @@ const router = express.Router();
 
 const brandCtrl = require('../controllers/brand.controller');
 
-router.get('/', brandCtrl.getBrands);
+router.get('/user/:userId', brandCtrl.getBrands);
 router.post('/', brandCtrl.createBrand);
 router.get('/:id/:name?', brandCtrl.getBrand);
 router.put('/', brandCtrl.editBrand);
