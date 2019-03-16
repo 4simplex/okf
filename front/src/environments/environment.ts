@@ -4,15 +4,15 @@
 
 export const environment = {
   production: false,
-  loginUrl: "http://localhost:3000/api/authenticate",
-  registerUrl: "http://localhost:3000/api/register",
-  profileUrl: "http://localhost:3000/api/profile",
-  brandUrl: "http://localhost:3000/api/brand",
-  productUrl: "http://localhost:3000/api/product",
-  categoryUrl: "http://localhost:3000/api/category",
-  providerUrl: "http://localhost:3000/api/provider",
-  priceUrl: "http://localhost:3000/api/price",
-  saleUrl: "http://localhost:3000/api/sale"
+  loginUrl: 'http://localhost:3000/api/authenticate',
+  registerUrl: 'http://localhost:3000/api/register',
+  profileUrl: 'http://localhost:3000/api/profile',
+  brandUrl: 'http://localhost:3000/api/brand',
+  productUrl: 'http://localhost:3000/api/product',
+  categoryUrl: 'http://localhost:3000/api/category',
+  providerUrl: 'http://localhost:3000/api/provider',
+  priceUrl: 'http://localhost:3000/api/price',
+  saleUrl: 'http://localhost:3000/api/sale'
 };
 
 /*

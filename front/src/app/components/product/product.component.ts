@@ -18,11 +18,11 @@ export class ProductComponent implements OnInit {
   private uploadChild: UploadImageComponent;
   currentPage: Number = 1;
   noImage = getNoImage();
-  productService: ProductService
+  productService: ProductService;
 
   constructor(private fb: FormBuilder, private productSrv: ProductService) {
     this.productService = productSrv;
-    
+
     this.productForm = fb.group({
       'name': ['', Validators.required],
       'category': fb.group({

@@ -14,11 +14,11 @@ export class ProductService {
   constructor(private productService: HttpClient) { }
 
   getProduct() {
-    return this.productService.get(environment.productUrl)
+    return this.productService.get(environment.productUrl);
   }
 
   postProduct(product) {
-    return this.productService.post(environment.productUrl, product)
+    return this.productService.post(environment.productUrl, product);
   }
 
   deleteProduct(_id: string) {
