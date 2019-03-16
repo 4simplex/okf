@@ -27,5 +27,9 @@
     "body-parser": "*",
     "passport": "*",
     "passport-jwt": "*"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.2",
+    "eslint-config-google": "^0.12.0"
   }
 }
