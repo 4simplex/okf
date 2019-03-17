@@ -30,10 +30,22 @@ priceCtrl.getPrice = async (req, res) => {
 };
 
 priceCtrl.getPriceByName = async (req, res) => {
-  const price = await Price.find({'productCode': {'$regex': req.params.productCode, '$options': 'i'}});
+  const price = await Price.find({
+    $and: [
+      {user: req.params.userId},
+      {'productCode': {'$regex': req.params.productCode, '$options': 'i'}},
+    ],
+  });
 
   if (price.length == 0) {
-    const name = await Price.find({'productForm.product.name': {'$regex': req.params.productCode, '$options': 'i'}});
+    // const name = await Price.find();
+    const name = await Price.find({
+      $and: [
+        {user: req.params.userId},
+        {'productForm.product.name': {'$regex': req.params.productCode, '$options': 'i'}},
+      ],
+    });
+
     res.json(name);
     return;
   }
