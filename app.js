@@ -6,28 +6,28 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 
-//Connect to database
-mongoose.connect(config.database, { useNewUrlParser: true })
-.then(db => console.log('DB is connected'))
-.catch(err => console.error(err))
+// Connect to database
+mongoose.connect(config.database, {useNewUrlParser: true})
+    .then((db) => console.log('DB is connected'))
+    .catch((err) => console.error(err));
 
 const app = express();
 
-//Port Number
+// Port Number
 const port = process.env.PORT || 3000;
 
-app.use(express.json({ extended: true, limit: '50mb' }));
+app.use(express.json({extended: true, limit: '50mb'}));
 
-//CORS Middleware
+// CORS Middleware
 app.use(cors());
 
-//Set public folder
+// Set public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Body Parser Middleware
+// Body Parser Middleware
 app.use(bodyParser.json());
 
-//Passport Middleware
+// Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -41,16 +41,16 @@ app.use('/api/provider', require('./routes/provider.routes'));
 app.use('/api/price', require('./routes/price.routes'));
 app.use('/api/sale', require('./routes/sale.routes'));
 
-//Index Route
+// Index Route
 app.get('/', (req, res) => {
-    res.send('Invalid Endpoint.');
+  res.send('Invalid Endpoint.');
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-//Start server
+// Start server
 app.listen(port, () => {
-    console.log('listening on port ' + port);
+  console.log('listening on port ' + port);
 });

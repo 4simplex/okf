@@ -4,42 +4,42 @@ const Price = require('../models/price');
 const brandCtrl = {};
 
 brandCtrl.getBrands = async (req, res) => {
-    const brands = await Brand.find({ user: req.params.userId });
-    res.json(brands);
-}
+  const brands = await Brand.find({user: req.params.userId});
+  res.json(brands);
+};
 
 brandCtrl.createBrand = async (req, res) => {
-    const brand = new Brand(req.body);
-    await brand.save();
-    res.json(brand);
-}
+  const brand = new Brand(req.body);
+  await brand.save();
+  res.json(brand);
+};
 
 brandCtrl.getBrand = async (req, res) => {
-    const brand = await brandCtrl.getBrandBy(req, res);
-    res.json(brand);
-}
+  const brand = await brandCtrl.getBrandBy(req, res);
+  res.json(brand);
+};
 
 brandCtrl.editBrand = async (req, res) => {
-    await Brand.findByIdAndUpdate(req.body._id, { $set: { name: req.body.name } });
-    await Product.updateMany({ "brand._id": req.body._id}, { $set: { "brand.name": req.body.name } });   
-    await Price.updateMany({"productForm.product.brand._id": req.body._id}, { $set: { "productForm.product.brand.name": req.body.name}});
-    
-    res.json({ status: 'Brand updated' });     
-}
+  await Brand.findByIdAndUpdate(req.body._id, {$set: {name: req.body.name}});
+  await Product.updateMany({'brand._id': req.body._id}, {$set: {'brand.name': req.body.name}});
+  await Price.updateMany({'productForm.product.brand._id': req.body._id}, {$set: {'productForm.product.brand.name': req.body.name}});
+
+  res.json({status: 'Brand updated'});
+};
 
 brandCtrl.deleteBrand = async (req, res) => {
-    await Brand.findByIdAndRemove(req.params.id);
-    res.json({ status: 'Brand deleted' });
-}
+  await Brand.findByIdAndRemove(req.params.id);
+  res.json({status: 'Brand deleted'});
+};
 
 brandCtrl.getBrandBy = async (req, res) => {
-    if (req.params.id != "noId") {
-        return Brand.findById(req.params.id);
-    }
+  if (req.params.id != 'noId') {
+    return Brand.findById(req.params.id);
+  }
 
-    if ((req.params.id != "noId" && req.params.name != null) || req.params.name != null) {
-        return Brand.findOne({ name: { $regex: new RegExp("^" + req.params.name + "$", 'i') } });
-    }
-}
+  if ((req.params.id != 'noId' && req.params.name != null) || req.params.name != null) {
+    return Brand.findOne({name: {$regex: new RegExp('^' + req.params.name + '$', 'i')}});
+  }
+};
 
 module.exports = brandCtrl;
