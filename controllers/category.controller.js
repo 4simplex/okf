@@ -5,7 +5,7 @@ const categoryCtrl = {};
 
 
 categoryCtrl.getCategories = async (req, res) => {
-  const categories = await Category.find();
+  const categories = await Category.find({user: req.params.userId});
   res.json(categories);
 };
 

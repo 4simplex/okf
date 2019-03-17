@@ -14,7 +14,7 @@
                 "uriFormat": "http://localhost:%s",
                 "action": "openExternally"
             }
-        // },
+        },
         // {
         //     "type": "chrome",
         //     "request": "launch",

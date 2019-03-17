@@ -4,7 +4,7 @@ const providerCtrl = {};
 
 
 providerCtrl.getProviders = async (req, res) => {
-  const providers = await Provider.find();
+  const providers = await Provider.find({user: req.params.userId});
   res.json(providers);
 };
 

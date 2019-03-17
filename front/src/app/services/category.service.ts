@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Category } from '../models/category-model';
-import { environment } from '../../environments/environment';
-
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+import { Category } from '../models/category-model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,8 @@ export class CategoryService {
   }
 
   getCategories() {
-    return this.http.get(environment.categoryUrl);
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    return this.http.get(`${environment.categoryUrl}/user/${userId}`);
   }
 
   getCategory(id: string): Observable<Category> {
@@ -30,6 +30,8 @@ export class CategoryService {
   }
 
   postCategory(category: Category): Observable<Category> {
+    const user = JSON.parse(localStorage.getItem('user'));
+    category.user = user.id;
     return this.http.post<Category>(environment.categoryUrl, category);
   }
 
