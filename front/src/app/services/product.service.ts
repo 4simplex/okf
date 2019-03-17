@@ -14,10 +14,14 @@ export class ProductService {
   constructor(private productService: HttpClient) { }
 
   getProduct() {
-    return this.productService.get(environment.productUrl);
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    return this.productService.get(`${environment.productUrl}/user/${userId}`);
   }
 
   postProduct(product) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    product.user = user.id;
+
     return this.productService.post(environment.productUrl, product);
   }
 

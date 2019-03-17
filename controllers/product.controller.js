@@ -2,7 +2,7 @@ const productCTRL = {};
 const Product = require('../models/product');
 
 productCTRL.getProduct = async (req, res) => {
-  const product = await Product.find();
+  const product = await Product.find({user: req.params.userId});
   res.json(product);
 };
 

@@ -13,6 +13,7 @@ const ProductSchema = new Schema({
   name: {type: String, required: true},
   description: {type: String, required: false},
   fileImg: {type: String, required: false},
+  user: {type: String, required: true},
 });
 
 module.exports = mongoose.model('Product', ProductSchema);

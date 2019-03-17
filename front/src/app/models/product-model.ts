@@ -6,4 +6,5 @@ export class Product {
     description: string;
     photo: string;
     fileImg: string;
+    user: string;
 }
