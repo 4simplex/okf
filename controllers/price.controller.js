@@ -5,7 +5,7 @@ const productCodeCtrl = require('./productCode.controller');
 const codeGenerator = require('../helpers/codeGenerator');
 
 priceCtrl.getPriceLst = async (req, res) => {
-  const priceLst = await Price.find();
+  const priceLst = await Price.find({user: req.params.userId});
   res.json(priceLst);
 };
 

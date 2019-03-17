@@ -21,7 +21,9 @@ export class PriceService {
   }
 
   getPriceLst() {
-    return this.http.get(environment.priceUrl);
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+
+    return this.http.get(`${environment.priceUrl}/user/${userId}`);
   }
 
   getPriceById(id: string): Observable<Price> {
@@ -33,6 +35,9 @@ export class PriceService {
   }
 
   postPrice(price: Price) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    price.user = user.id;
+
     return this.http.post(environment.priceUrl, price);
   }
 

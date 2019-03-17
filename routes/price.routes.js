@@ -3,7 +3,7 @@ const router = express.Router();
 
 const priceCtrl = require('../controllers/price.controller');
 
-router.get('/', priceCtrl.getPriceLst);
+router.get('/user/:userId', priceCtrl.getPriceLst);
 router.post('/', priceCtrl.createPrice);
 router.get('/getprice/:productCode', priceCtrl.getPriceByName);
 router.get('/:id', priceCtrl.getPrice);

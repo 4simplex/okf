@@ -27,4 +27,5 @@ export class Price {
     stock: number;
     units: number;
     priceForUnits: number;
+    user: string;
 }

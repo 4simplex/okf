@@ -30,7 +30,7 @@ export class PriceComponent implements OnInit {
     private productService: ProductService
   ) {
     this.priceService = priceSrv;
-    
+
     this.priceForm = fb.group({
       'productForm': fb.group({
         'product': ['']
