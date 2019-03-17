@@ -50,6 +50,7 @@ export class ProductService {
   }
 
   searchProductByName(character): Observable<Product> {
-    return this.productService.get<Product>(environment.productUrl + `/get/products/${character}`);
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    return this.productService.get<Product>(environment.productUrl + `/get/products/${userId}` + `/${character}`);
   }
 }

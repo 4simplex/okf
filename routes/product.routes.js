@@ -9,6 +9,6 @@ router.put('/:id', productController.updateProduct);
 router.get('/brand/:id', productController.hasProducts);
 router.get('/category/:id', productController.categoryhasProducts);
 router.get('/:id/:name?', productController.getProductById);
-router.get('/get/products/:character', productController.searchProductByName);
+router.get('/get/products/:userId/:character', productController.searchProductByName);
 
 module.exports = router;

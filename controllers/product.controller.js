@@ -49,10 +49,22 @@ productCTRL.categoryhasProducts = async (req, res) => {
 };
 
 productCTRL.searchProductByName = async (req, res) => {
-  const prod = await Product.find({'brand.name': {'$regex': req.params.character, '$options': 'i'}});
+  const prod = await Product.find({
+    $and: [
+      {user: req.params.userId},
+      {'brand.name': {'$regex': req.params.character, '$options': 'i'}},
+    ],
+  });
 
   if (prod.length == 0) {
-    const name = await Product.find({'name': {'$regex': req.params.character, '$options': 'i'}});
+    // const name = await Product.find();
+    const name = await Product.find({
+      $and: [
+        {user: req.params.userId},
+        {'name': {'$regex': req.params.character, '$options': 'i'}},
+      ],
+    });
+
     res.json(name);
     return;
   }

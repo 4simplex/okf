@@ -97,10 +97,10 @@ export class PriceComponent implements OnInit {
 
   searchProduct(event) {
     const searchValue = event.target.value;
-    
+
     if (searchValue !== '') {
       if (searchValue.trim() === '') {
-        alert("dato no valido");
+        alert('dato no valido');
         this.searchResult = '';
         return;
       }
@@ -108,7 +108,6 @@ export class PriceComponent implements OnInit {
       this.loading = true;
 
       const searchWhithOneSpace = RemoveWhiteSpaces(searchValue);
-      console.log(searchWhithOneSpace)
       this.productService.searchProductByName(searchWhithOneSpace)
         .subscribe(res => {
           this.loading = false;
