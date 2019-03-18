@@ -10,6 +10,9 @@ export class SaleService {
   constructor(private http: HttpClient) { }
 
   postSale(sale: Sale) {
+    const user = JSON.parse(localStorage.getItem('user'));
+    sale.user = user.id;
+
     return this.http.post(environment.saleUrl, sale);
   }
 

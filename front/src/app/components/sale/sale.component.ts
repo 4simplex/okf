@@ -165,11 +165,11 @@ export class SaleComponent implements OnInit {
         return product;
       });
 
-      this.saleService.postSale(this.sale)
-        .subscribe(res => {
-          alert(this.appLiterals.sales.soldMsg);
-          this.products = [];
-        });
+      this.saleService.postSale(this.sale).subscribe(res => {
+        alert(this.appLiterals.sales.soldMsg);
+        this.products = [];
+      });
+
       this.products.map(product => {
         this.priceService.updatePrice(product).subscribe();
       });
