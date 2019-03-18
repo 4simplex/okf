@@ -17,6 +17,7 @@ export class SaleService {
   }
 
   getSales(firstDate, secondDate) {
-    return this.http.get(environment.saleUrl + `/${firstDate}` + `/${secondDate}`);
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    return this.http.get(environment.saleUrl + `/${userId}` + `/${firstDate}` + `/${secondDate}`);
   }
 }

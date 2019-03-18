@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SaleService } from '../../services/sale.service';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-stats',
@@ -26,7 +25,6 @@ export class StatsComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.initialValues();
-   
   }
 
   initialValues() {
@@ -44,7 +42,7 @@ export class StatsComponent implements OnInit {
       this.dataSell = results.dataSales;
 
       this.chartLabels = results.dataDates;
-    })
+    });
   }
 
   changeDatePeriod(event) {

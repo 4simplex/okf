@@ -8,13 +8,11 @@ saleCtrl.createSale = async (req, res) => {
 };
 
 saleCtrl.getSales = async (req, res) => {
-  console.log(req.params.firstDate);
-  console.log(req.params.secondDate);
   const sales = await Sale.find({
-    saleDate: {
-      $gte: req.params.firstDate,
-      $lte: req.params.secondDate,
-    },
+    $and: [
+      {user: req.params.userId},
+      {saleDate: {$gte: req.params.firstDate, $lte: req.params.secondDate}},
+    ],
   });
 
   res.json(sales);

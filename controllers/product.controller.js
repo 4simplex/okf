@@ -57,7 +57,6 @@ productCTRL.searchProductByName = async (req, res) => {
   });
 
   if (prod.length == 0) {
-    // const name = await Product.find();
     const name = await Product.find({
       $and: [
         {user: req.params.userId},
