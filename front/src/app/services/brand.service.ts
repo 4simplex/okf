@@ -26,6 +26,11 @@ export class BrandService {
       );
   }
 
+  getBrandByName(name, id): Observable<Brand> {
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    return this.http.get<Brand>(`${environment.brandUrl}/${userId}/${id}/${name}`);
+  }
+
   /** GET brand by id. Return `undefined` when id not found */
   getBrandNo404<Data>(id: string): Observable<Brand> {
     const url = `${environment.brandUrl}/?id=${id}`;
@@ -115,7 +120,4 @@ export class BrandService {
     };
   }
 
-  getBrandByName(name, id): Observable<Brand> {
-    return this.http.get<Brand>(environment.brandUrl + `/${id}` + `/${name}`);
-  }
 }

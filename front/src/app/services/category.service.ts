@@ -29,6 +29,11 @@ export class CategoryService {
     );
   }
 
+  getCategoryByName(name, id): Observable<Category> {
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    return this.http.get<Category>(`${environment.categoryUrl}/${userId}/${id}/${name}`);
+  }
+
   postCategory(category: Category): Observable<Category> {
     const user = JSON.parse(localStorage.getItem('user'));
     category.user = user.id;
@@ -41,10 +46,6 @@ export class CategoryService {
 
   deleteCategory(_id: string) {
     return this.http.delete(environment.categoryUrl + `/${_id}`);
-  }
-
-  getCategoryByName(name, id): Observable<Category> {
-    return this.http.get<Category>(environment.categoryUrl + `/${id}` + `/${name}`);
   }
 
   /**
