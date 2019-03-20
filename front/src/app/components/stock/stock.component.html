@@ -28,7 +28,9 @@
               <p>
                 <strong>{{ appLiterals.price.purchasePriceShort }}</strong> {{ price.purchasePrice | currency }}
                 <strong>{{ appLiterals.price.salePriceShort }}</strong> {{ price.salePrice  | currency}}
-                <strong>{{ appLiterals.category.cagtegory }}</strong> {{ price.productForm.product.category.name }}
+                <strong>{{ appLiterals.category.category }}</strong> {{ price.productForm.product.category.name }}
+                <strong>{{ appLiterals.provider.provider }}</strong> {{  price.provider.name }}
+                <strong>{{ appLiterals.product.productCode }}</strong> {{ price.productCode }}
               </p>
             </div>
 

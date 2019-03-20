@@ -41,7 +41,7 @@ export const appLiterals = {
         deleteCategoryMsg: 'Desea eliminar la categoría?'
     },
     provider: {
-        providers: 'Providers',
+        provider: 'Proveedor:',
         createProvider: 'Crear Proveedor',
         registeredProviders: 'Proveedores registrados',
         providerInfo: 'Información del Proveedor',
@@ -56,7 +56,8 @@ export const appLiterals = {
         registeredProducts: 'Productos registrados',
         dataNotValidMsg: 'Dato no válido. Debe escribir una categoría.',
         existingProductMsg: 'El producto ya existe.',
-        deleteProductMsg: 'Desea eliminar el producto?'
+        deleteProductMsg: 'Desea eliminar el producto?',
+        productCode: 'Código de producto:'
     },
     price: {
         price: 'Precios',
@@ -136,7 +137,5 @@ export const appLiterals = {
         freePlanTitle: 'Versión gratuita!',
         premiumPlanTitle: 'Versión Premium',
         goldPlanTitle: 'Versión Gold',
-        // tslint:disable-next-line:max-line-length
-        lorem: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
     }
 };
