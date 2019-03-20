@@ -11,8 +11,9 @@
       </div>
       <div class="row">
         <div class="col-md-6">
+
             <div class="form-group searchContainer">
-              <input type="text" class="form-control" (keyup)="searchProduct($event)" capitalize placeholder="Buscar Producto...." [value]="inputSearch" />
+              <input type="text" [readonly]="inputSearchReadOnly" class="form-control" (keyup)="searchProduct($event)" capitalize placeholder="Buscar Producto...." [value]="inputSearch" />
               <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="loading">
                 <app-spinner>
                 </app-spinner>
@@ -39,7 +40,8 @@
           </div>
 
           <div class="form-group">
-            <button class="btn btn-primary mr-1">Crear</button>
+            <button [disabled]="btnCreateDisabled" class="btn btn-primary mr-1">Crear</button>
+            <button type="button" [disabled]="btnResetFormDisabled" class="btn btn-primary mr-1" (click)="resetForm()">Ingresar nuevo precio</button>
           </div>
         </div>
         <div class="col-md-6">

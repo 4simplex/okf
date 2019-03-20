@@ -13,6 +13,7 @@ import { RemoveWhiteSpaces } from '../../helpers/customValidators';
   styleUrls: ['./price.component.css']
 })
 export class PriceComponent implements OnInit {
+  priceService: PriceService;
   priceForm: FormGroup;
   noImage = getNoImage();
   prodCode: string;
@@ -21,7 +22,9 @@ export class PriceComponent implements OnInit {
   loading = false;
   searchResult;
   inputSearch = '';
-  priceService: PriceService;
+  btnCreateDisabled = false;
+  inputSearchReadOnly = false;
+  btnResetFormDisabled = true;
 
   constructor(
     private fb: FormBuilder,
@@ -66,8 +69,23 @@ export class PriceComponent implements OnInit {
       .subscribe(res => {
         const price = res as Price;
         this.prodCode = price.productCode;
+        this.priceForm.disable();
+        this.btnCreateDisabled = true;
+        this.inputSearchReadOnly = true;
+        this.btnResetFormDisabled = false;
         this.getAllPriceItems();
       });
+  }
+
+  resetForm() {
+    this.priceForm.reset();
+    this.priceForm.enable();
+    this.inputSearchReadOnly = false;
+    this.inputSearch = '';
+    this.prodCode = '';
+    this.btnCreateDisabled = false;
+    this.productFileImage = '';
+    this.btnResetFormDisabled = true;
   }
 
   getAllPriceItems() {
