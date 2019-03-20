@@ -34,7 +34,7 @@
               <a routerLink="/categories/{{category._id}}" class="btn btn-primary">{{ appLiterals.btnEdit }}</a>
             </div>
             <div class="col-md-1">
-              <a (click)="deleteCategory(category)" class="btn btn-danger">{{ appLiterals.btnDelete }}</a>
+              <button (click)="deleteCategory(category)" class="btn btn-danger">{{ appLiterals.btnDelete }}</button>
             </div>
 
           </div>
