@@ -52,13 +52,13 @@
       <div class="row align-items-center stat-row" *ngFor="let sell of sells | paginate: {itemsPerPage:10, currentPage: currentPage}">
   
         <div class="col-md-1">
-          <p>{{sell.saleDate }}</p>
+          <p>{{ sell.saleDate }}</p>
         </div>
   
         <div class="col-md-5">
           <div *ngFor="let product of sell.productsGroup">
               <h4><strong>{{ product.productForm.product.brand.name }}</strong> - {{ product.productForm.product.name }} ({{ product.productCode }})</h4>
-              <p><strong>Precio Compra x U.:</strong> {{ product.purchasePrice | currency }} <strong>Precio Venta x U.:</strong> {{ product.salePrice | currency }}</p>
+              <p><strong>Precio Compra x U:</strong> {{ product.purchasePrice | currency }} <strong>Precio Venta x U:</strong> {{ product.salePrice | currency }}</p>
               <p><strong>Unidades vendidas:</strong> {{ product.units }} <strong>Total Venta Unidades:</strong> {{ product.priceForUnits | currency }}</p>
           </div>
         </div>

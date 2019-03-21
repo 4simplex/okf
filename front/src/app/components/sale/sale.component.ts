@@ -107,13 +107,13 @@ export class SaleComponent implements OnInit {
   modifyProduct(product, event) {
     const currentProduct = this.products.find(item => item._id === product._id);
 
-    if (event.target.value == "0") {
+    if (event.target.value === '0') {
       currentProduct.units = 1;
       currentProduct.priceForUnits = currentProduct.salePrice * currentProduct.units;
       this.totalAmount();
       this.totalPurchasePrice();
       return;
-    }else if (event.target.value > product.stock) {
+    } else if (event.target.value > product.stock) {
       const currentProduct = this.products.find(item => item._id === product._id);
       alert(this.appLiterals.sales.insuficientStockMsg);
       currentProduct.units = 1;
@@ -121,7 +121,7 @@ export class SaleComponent implements OnInit {
       this.totalAmount();
       this.totalPurchasePrice();
       return;
-    }else{
+    } else {
       const currentProduct = this.products.find(item => item._id === product._id);
       currentProduct.units = event.target.value;
     currentProduct.priceForUnits = currentProduct.salePrice * currentProduct.units;
@@ -183,7 +183,7 @@ export class SaleComponent implements OnInit {
   }
 
   getFormattedPrice(price: number) {
-    let currencyPrice = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(price);
+    const currencyPrice = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(price);
     return currencyPrice;
   }
 

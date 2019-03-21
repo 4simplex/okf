@@ -46,13 +46,13 @@ export class StatsComponent implements OnInit {
   }
 
   changeDatePeriod(event) {
-    if(event !== null) {
-      let firstDate = event[0];
+    if (event !== null) {
+      const firstDate = event[0];
       firstDate.setHours(0);
       firstDate.setMinutes(0);
       firstDate.setSeconds(0);
 
-      let secondDate = event[1];
+      const secondDate = event[1];
       secondDate.setHours(20);
       secondDate.setMinutes(59);
       secondDate.setSeconds(59);
@@ -67,7 +67,7 @@ export class StatsComponent implements OnInit {
         const results = this.getDataForDates(this.sells);
         this.dataSell = results.dataSales;
         this.chartLabels = results.dataDates;
-      })
+      });
 
       this.secondDay = event[1];
       this.firstDay = event[0];
@@ -75,18 +75,18 @@ export class StatsComponent implements OnInit {
   }
 
   convertDateTime(res) {
-    for (let i=0; i < res.length; i++) {
-      let currentDate = new Date(res[i].saleDate);
-      res[i].saleDate = new Date(currentDate.getTime() + Math.abs(currentDate.getTimezoneOffset()*60000) );
+    for (let i = 0; i < res.length; i++) {
+      const currentDate = new Date(res[i].saleDate);
+      res[i].saleDate = new Date(currentDate.getTime() + Math.abs(currentDate.getTimezoneOffset() * 60000) );
     }
 
-    return res
+    return res;
   }
 
   convertDateTimeToString(res) {
-    for (let i=0; i < res.length; i++) {
-      let year = res[i].saleDate.getFullYear();
-      let month = res[i].saleDate.getMonth()+1;
+    for (let i = 0; i < res.length; i++) {
+      const year = res[i].saleDate.getFullYear();
+      let month = res[i].saleDate.getMonth() + 1;
       let dt = res[i].saleDate.getDate();
 
       if (dt < 10) {
@@ -99,45 +99,45 @@ export class StatsComponent implements OnInit {
       res[i].saleDate = dt + '/' + month + '/' + year;
     }
 
-    return res
+    return res;
   }
 
   getDataForDates(sells) {
-    let filterDates = this.filterDates(sells);
-    let convertedDates = this.getSimpleDate([...filterDates]);
-    let convertedObjectsDates = this.convertDateTimeToString(filterDates);
+    const filterDates = this.filterDates(sells);
+    const convertedDates = this.getSimpleDate([...filterDates]);
+    const convertedObjectsDates = this.convertDateTimeToString(filterDates);
 
     const dataSales = [];
     const dataDates = [];
 
-    for (let i=0; i < convertedObjectsDates.length; i++){
-      let existingDate = dataDates.includes(convertedDates[i]);
+    for (let i = 0; i < convertedObjectsDates.length; i++) {
+      const existingDate = dataDates.includes(convertedDates[i]);
 
       if (!existingDate) {
         let sumData;
         sumData = convertedObjectsDates.filter(item => item.saleDate ===  convertedDates[i])
         .reduce((acc, product) => {
-          return acc + product.saleTotal
+          return acc + product.saleTotal;
         }, 0);
 
-        let collectDates = convertedDates[i];
+        const collectDates = convertedDates[i];
 
         dataDates.push(collectDates);
         dataSales.push(sumData);
       }
     }
 
-    return {dataSales: dataSales, dataDates: dataDates}
+    return {dataSales: dataSales, dataDates: dataDates};
   }
 
-  filterDates(allDates){
-    return allDates.filter((v,i) => allDates.indexOf(v) === i);
+  filterDates(allDates) {
+    return allDates.filter((v, i) => allDates.indexOf(v) === i);
   }
 
   getSimpleDate(tempDates) {
     const allDates = tempDates.map(sale => {
-      let year = sale.saleDate.getFullYear();
-      let month = sale.saleDate.getMonth()+1;
+      const year = sale.saleDate.getFullYear();
+      let month = sale.saleDate.getMonth() + 1;
       let dt = sale.saleDate.getDate();
       if (dt < 10) {
         dt = 0 + dt;
@@ -147,10 +147,10 @@ export class StatsComponent implements OnInit {
       }
 
 
-      return dt + '/' + month + '/' + year 
+      return dt + '/' + month + '/' + year;
     });
 
-    return allDates
+    return allDates;
   }
 
   calculateFirstDayMonth(today) {
@@ -163,7 +163,7 @@ export class StatsComponent implements OnInit {
   sumPurchaseTotal (res) {
     const total = res.reduce((acc, item) => {
       return acc + item.purchasePriceTotal;
-    }, 0)
+    }, 0);
 
     return total;
   }
@@ -171,13 +171,13 @@ export class StatsComponent implements OnInit {
   sumSellTotal (res) {
     const total = res.reduce((acc, item) => {
       return acc + item.saleTotal;
-    }, 0)
+    }, 0);
 
     return total;
   }
 
   getFormattedPrice(price: number) {
-    let currencyPrice = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(price);
+    const currencyPrice = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(price);
     return currencyPrice;
   }
 }
