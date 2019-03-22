@@ -102,7 +102,8 @@ export const appLiterals = {
         profile: 'Página de perfil',
         password: 'Contraseña',
         account: 'Datos de la cuenta',
-        name: 'Nombre y apellido'
+        name: 'Nombre y apellido',
+        createdDate: 'Fecha de registración',
     },
     login: {
         loginTitle: 'Inicio de sesión',

@@ -14,6 +14,7 @@
           <ul class="list-group">
             <li class="list-group-item"> <strong>{{ appLiterals.user.username }}: </strong> {{user.username}}</li>
             <li class="list-group-item"> <strong>{{ appLiterals.user.email }}: </strong> {{user.email}}</li>
+            <li class="list-group-item"> <strong>{{ appLiterals.user.createdDate }}: </strong> {{user.createdDate | date:'dd/MM/yyyy HH:mm': 'UTC'}}</li>
           </ul>
         </div>
       </div>
