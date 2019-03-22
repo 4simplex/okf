@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrandService } from './services/brand.service';
 import { AppComponent } from './app.component';
@@ -41,6 +41,10 @@ import { StockComponent } from './components/stock/stock.component';
 import { SaleComponent } from './components/sale/sale.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { ChartgraphComponent } from './components/chartgraph/chartgraph.component';
+
+import { registerLocaleData } from '@angular/common';
+import localeEsAr from '@angular/common/locales/es-AR';
+registerLocaleData(localeEsAr, 'es-Ar');
 
 @NgModule({
   declarations: [
@@ -92,7 +96,8 @@ import { ChartgraphComponent } from './components/chartgraph/chartgraph.componen
     PriceService,
     ValidateService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    { provide: LOCALE_ID, useValue: 'es-Ar' }
   ],
 
   bootstrap: [AppComponent]
