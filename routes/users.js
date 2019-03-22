@@ -13,8 +13,8 @@ router.post('/register', (req, res, next) => {
     email: req.body.email,
     username: req.body.username,
     password: req.body.password,
-    createdDate: dateHelper.createDateAsUTC(new Date()),
-    // createdDate: new Date(),
+    // createdDate: dateHelper.createDateAsUTC(new Date()),
+    createdDate: new Date(),
   });
 
   User.getUserByEmail(newUser.email, (err, user) => {

@@ -15,7 +15,7 @@
             <li class="list-group-item"> <strong>{{ appLiterals.user.username }}: </strong> {{user.username}}</li>
             <li class="list-group-item"> <strong>{{ appLiterals.user.email }}: </strong> {{user.email}}</li>
             <!-- <li class="list-group-item"> <strong>{{ appLiterals.user.createdDate }}: </strong> {{user.createdDate | date:'dd/MM/yyyy HH:mm': 'UTC'}}</li> -->
-            <li class="list-group-item"> <strong>{{ appLiterals.user.createdDate }}: </strong> {{user.createdDate}}</li>
+            <li class="list-group-item"> <strong>{{ appLiterals.user.createdDate }}: </strong> {{user.createdDate | date:'full':'GMT-3'}}</li>
           </ul>
         </div>
       </div>
