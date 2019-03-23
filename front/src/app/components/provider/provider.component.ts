@@ -3,6 +3,7 @@ import { ProviderService } from '../../services/provider.service';
 import { NgForm } from '@angular/forms';
 import { Provider } from 'src/app/models/provider-model';
 import { RemoveWhiteSpaces } from '../../helpers/customValidators';
+import { appLiterals } from '../../resources/appLiteral';
 
 @Component({
   selector: 'app-provider',
@@ -13,12 +14,29 @@ export class ProviderComponent implements OnInit {
   selectedProvider: Provider;
   providers: Provider[];
   currentPage: Number = 1;
+  appLiterals;
+  loading: boolean;
+  emptyProviderList: boolean;
+
   constructor(private providerService: ProviderService) {
     this.selectedProvider = new Provider();
+    this.appLiterals = appLiterals;
   }
 
   ngOnInit() {
+    this.loading = true;
     this.getProviders();
+  }
+
+  getProviders() {
+    this.providerService.getProviders()
+      .subscribe(res => {
+        this.loading = false;
+        this.providers = res as Provider[];
+        if (typeof this.providers === 'undefined' || this.providers.length <= 0) {
+          this.emptyProviderList = true;
+        }
+      });
   }
 
   addProvider(form: NgForm) {
@@ -40,22 +58,18 @@ export class ProviderComponent implements OnInit {
         } else {
           if (!nameWithOneSpace) { return; }
           name = nameWithOneSpace;
-          let info = form.controls.info.value;
+          const info = form.controls.info.value;
           this.providerService.postProvider({ name, info } as Provider)
-            .subscribe(provider => {
-              this.providers.push(provider);
+            .subscribe(() => {
+              this.providers = [];
+              this.loading = true;
+              this.getProviders();
               this.selectedProvider._id = '';
               this.selectedProvider.name = '';
               this.selectedProvider.info = '';
+              this.emptyProviderList = false;
             });
         }
-      });
-  }
-
-  getProviders() {
-    this.providerService.getProviders()
-      .subscribe(res => {
-        this.providers = res as Provider[];
       });
   }
 
@@ -65,17 +79,12 @@ export class ProviderComponent implements OnInit {
 
   deleteProvider(_id: string) {
     if (confirm('Está seguro de querer eliminarlo?')) {
+      this.providers = [];
       this.providerService.deleteProvider(_id)
-        .subscribe(res => {
+        .subscribe(() => {
+          this.loading = true;
           this.getProviders();
         });
-    }
-  }
-
-  resetForm(form?: NgForm) {
-    if (form) {
-      form.reset();
-      this.providerService.selectedProvider = new Provider();
     }
   }
 

@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row mb-3">
     <div class="col-md-12">
-      <h2>Proveedores</h2>
+      <h2>{{ appLiterals.provider.providers }}</h2>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="row mb-3 mt-2">
-        <h5>Crear Proveedor</h5>
+        <h5>{{ appLiterals.provider.createProvider }}</h5>
       </div>
       <div class="row mb-5">
         <div class="col-md-8">
@@ -15,7 +15,7 @@
             <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="selectedProvider._id">
             <input type="text" name="name" #name="ngModel" [(ngModel)]="selectedProvider.name" placeholder="Nombre" class="form-control mb-3" required>
             <input type="text" name="info" #info="ngModel" [(ngModel)]="selectedProvider.info" placeholder="Información del Proveedor" class="form-control mb-3">
-            <button [disabled]="!providerForm.valid" class="btn btn-primary">Guardar</button>
+            <button [disabled]="!providerForm.valid" class="btn btn-primary">{{ appLiterals.btnCreate }}</button>
           </form>
         </div>
       </div>
@@ -24,8 +24,15 @@
         <div class="col-md-12">
           <div class="row mb-3 mt-2">
             <div class="col-md-12">
-              <h5>Proveedores Creados</h5>
+              <h5>{{ appLiterals.provider.registeredProviders }}</h5>
             </div>
+          </div>
+          <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="loading">
+            <app-spinner>
+            </app-spinner>
+          </div>
+          <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="emptyProviderList">
+            <label>{{ appLiterals.provider.emptyProviderList }}</label>
           </div>
           <div class="row align-items-center provider-row" *ngFor="let provider of providers | paginate: {itemsPerPage:10, currentPage: currentPage}">
             <div class="col-md-6 ">
@@ -35,10 +42,10 @@
               <h4>{{ provider.info }}</h4>
             </div>
             <div class="col-md-1 ">
-              <a routerLink="/providers/{{provider._id}} " class="btn btn-primary ">Editar</a>
+              <a routerLink="/providers/{{provider._id}} " class="btn btn-primary ">{{ appLiterals.btnEdit }}</a>
             </div>
             <div class="col-md-1 ">
-              <button (click)="deleteProvider(provider._id) " class="btn btn-danger ">Eliminar</button>
+              <button (click)="deleteProvider(provider._id) " class="btn btn-danger ">{{ appLiterals.btnDelete }}</button>
             </div>
           </div>
           <div class="row">

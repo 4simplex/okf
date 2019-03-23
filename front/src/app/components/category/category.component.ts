@@ -61,7 +61,9 @@ export class CategoryComponent implements OnInit {
           name = nameWithOneSpace;
           this.categoryService.postCategory({ name } as Category)
             .subscribe(category => {
-              this.categories.push(category);
+              this.categories = [];
+              this.loading = true;
+              this.getCategories();
               this.selectedCategory.name = '';
               this.selectedCategory._id = '';
               this.emptyCategoryList = false;
@@ -90,13 +92,6 @@ export class CategoryComponent implements OnInit {
           }
         }
       });
-  }
-
-  resetForm(form?: NgForm) {
-    if (form) {
-      form.reset();
-      this.categoryService.selectedCategory = new Category();
-    }
   }
 
 }

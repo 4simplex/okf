@@ -21,7 +21,6 @@ export class BrandsComponent implements OnInit {
 
   constructor(private brandService: BrandService, private productService: ProductService) {
     this.selectedBrand = new Brand();
-
     this.appLiterals = appLiterals;
   }
 
@@ -60,8 +59,10 @@ export class BrandsComponent implements OnInit {
           if (!nameWithOneSpace) { return; }
           name = nameWithOneSpace;
           this.brandService.addBrand({ name } as Brand)
-            .subscribe(brand => {
-              this.brands.push(brand);
+            .subscribe(() => {
+              this.brands = [];
+              this.loading = true;
+              this.getBrands();
               this.selectedBrand.name = '';
               this.selectedBrand._id = '';
               this.emptyBrandList = false;

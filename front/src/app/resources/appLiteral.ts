@@ -44,13 +44,15 @@ export const appLiterals = {
     },
     provider: {
         provider: 'Proveedor:',
+        providers: 'Proveedores',
         createProvider: 'Crear Proveedor',
-        registeredProviders: 'Proveedores registrados',
+        registeredProviders: 'Proveedores creados',
         providerInfo: 'Información del Proveedor',
         dataNotValidMsg: 'Dato no válido. Debe escribir una categoría.',
         existingProviderMsg: 'El proveedor ya existe.',
         cannotDeleteProviderMsg: 'No puede borrar el proveedor porque tiene productos existentes.',
-        deleteCategoryMsg: 'Desea eliminar el proveedor?'
+        deleteCategoryMsg: 'Desea eliminar el proveedor?',
+        emptyProviderList: 'No se encontraron proveedores creados.'
     },
     product: {
         products: 'Productos',
