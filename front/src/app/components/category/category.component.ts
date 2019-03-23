@@ -84,6 +84,7 @@ export class CategoryComponent implements OnInit {
             this.categories = this.categories.filter(b => b !== category);
             this.categoryService.deleteCategory(category._id)
             .subscribe(() => {
+              this.loading = true;
               this.getCategories();
             });
           }

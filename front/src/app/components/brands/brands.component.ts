@@ -80,6 +80,7 @@ export class BrandsComponent implements OnInit {
             this.brands = this.brands.filter(b => b !== brand);
             this.brandService.deleteBrand(brand)
               .subscribe(() => {
+                this.loading = true;
                 this.getBrands();
               });
           }
