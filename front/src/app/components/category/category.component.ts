@@ -34,9 +34,7 @@ export class CategoryComponent implements OnInit {
       .subscribe(cs => {
         this.loading = false;
         this.categories = cs as Category[];
-        if (typeof this.categories === 'undefined' || this.categories.length <= 0) {
-          this.emptyCategoryList = true;
-        }
+        this.emptyCategoryList = (typeof this.categories === 'undefined' || this.categories.length <= 0);
       });
   }
 
@@ -59,14 +57,13 @@ export class CategoryComponent implements OnInit {
         } else {
           if (!nameWithOneSpace) { return; }
           name = nameWithOneSpace;
+          this.categories = [];
+          this.loading = true;
           this.categoryService.postCategory({ name } as Category)
-            .subscribe(category => {
-              this.categories = [];
-              this.loading = true;
+            .subscribe(() => {
               this.getCategories();
               this.selectedCategory.name = '';
               this.selectedCategory._id = '';
-              this.emptyCategoryList = false;
             });
         }
       });
@@ -83,12 +80,12 @@ export class CategoryComponent implements OnInit {
           alert(this.appLiterals.category.cannotDeleteBCategoryMsg);
         } else {
           if (confirm(this.appLiterals.category.deleteCategoryMsg)) {
-            this.categories = this.categories.filter(b => b !== category);
+            this.categories = [];
+            this.loading = true;
             this.categoryService.deleteCategory(category._id)
-            .subscribe(() => {
-              this.loading = true;
-              this.getCategories();
-            });
+              .subscribe(() => {
+                this.getCategories();
+              });
           }
         }
       });

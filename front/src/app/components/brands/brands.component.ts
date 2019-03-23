@@ -34,9 +34,7 @@ export class BrandsComponent implements OnInit {
       .subscribe(bs => {
         this.loading = false;
         this.brands = bs as Brand[];
-        if (typeof this.brands === 'undefined' || this.brands.length <= 0) {
-          this.emptyBrandList = true;
-        }
+        this.emptyBrandList = (typeof this.brands === 'undefined' || this.brands.length <= 0);
       });
   }
 
@@ -58,14 +56,13 @@ export class BrandsComponent implements OnInit {
         } else {
           if (!nameWithOneSpace) { return; }
           name = nameWithOneSpace;
+          this.brands = [];
+          this.loading = true;
           this.brandService.addBrand({ name } as Brand)
             .subscribe(() => {
-              this.brands = [];
-              this.loading = true;
               this.getBrands();
               this.selectedBrand.name = '';
               this.selectedBrand._id = '';
-              this.emptyBrandList = false;
             });
         }
       });
@@ -78,10 +75,10 @@ export class BrandsComponent implements OnInit {
           alert(this.appLiterals.brands.cannotDeleteBrandMsg);
         } else {
           if (confirm(this.appLiterals.brands.deleteBrandMsg)) {
-            this.brands = this.brands.filter(b => b !== brand);
+            this.brands = [];
+            this.loading = true;
             this.brandService.deleteBrand(brand)
               .subscribe(() => {
-                this.loading = true;
                 this.getBrands();
               });
           }

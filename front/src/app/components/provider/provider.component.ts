@@ -33,9 +33,7 @@ export class ProviderComponent implements OnInit {
       .subscribe(res => {
         this.loading = false;
         this.providers = res as Provider[];
-        if (typeof this.providers === 'undefined' || this.providers.length <= 0) {
-          this.emptyProviderList = true;
-        }
+        this.emptyProviderList = (typeof this.providers === 'undefined' || this.providers.length <= 0);
       });
   }
 
@@ -59,15 +57,14 @@ export class ProviderComponent implements OnInit {
           if (!nameWithOneSpace) { return; }
           name = nameWithOneSpace;
           const info = form.controls.info.value;
+          this.providers = [];
+          this.loading = true;
           this.providerService.postProvider({ name, info } as Provider)
             .subscribe(() => {
-              this.providers = [];
-              this.loading = true;
               this.getProviders();
               this.selectedProvider._id = '';
               this.selectedProvider.name = '';
               this.selectedProvider.info = '';
-              this.emptyProviderList = false;
             });
         }
       });
@@ -80,9 +77,9 @@ export class ProviderComponent implements OnInit {
   deleteProvider(_id: string) {
     if (confirm('Está seguro de querer eliminarlo?')) {
       this.providers = [];
+      this.loading = true;
       this.providerService.deleteProvider(_id)
         .subscribe(() => {
-          this.loading = true;
           this.getProviders();
         });
     }
