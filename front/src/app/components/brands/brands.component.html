@@ -14,7 +14,7 @@
           <form #brandForm="ngForm" (ngSubmit)="addBrand(brandForm)" class="form-group">
             <input required type="text" name="name" #name [(ngModel)]="selectedBrand.name" placeholder="{{ appLiterals.placeholderName }}"
               class="form-control mb-3" />
-            <button [disabled]="!brandForm.valid" class="btn btn-primary">{{ appLiterals.btnSave }}</button>
+            <button [disabled]="!brandForm.valid" class="btn btn-primary">{{ appLiterals.btnCreate }}</button>
           </form>
         </div>
       </div>
@@ -25,6 +25,13 @@
             <div class="col-md-12">
               <h5>{{ appLiterals.brands.registeredBrands }}</h5>
             </div>
+          </div>
+          <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="loading">
+            <app-spinner>
+            </app-spinner>
+          </div>
+          <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="emptyBrandList">
+            <label>{{ appLiterals.brands.emptyBrandList }}</label>
           </div>
           <div class="row align-items-center brand-row" *ngFor="let brand of brands | paginate: {itemsPerPage:10, currentPage: currentPage}">
             <div class="col-md-10">

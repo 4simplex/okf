@@ -24,21 +24,23 @@ export const appLiterals = {
     brands: {
         brands: 'Marcas',
         createBrand: 'Crear Marca',
-        registeredBrands: 'Marcas registradas',
+        registeredBrands: 'Marcas creadas',
         dataNotValidMsg: 'Dato no válido. Debe escribir una marca.',
         existingBrandMsg: 'La Marca ya existe.',
         cannotDeleteBrandMsg: 'No puede borrar la marca porque tiene productos existentes.',
-        deleteBrandMsg: 'Desea eliminar la marca?'
+        deleteBrandMsg: 'Desea eliminar la marca?',
+        emptyBrandList: 'No se encontraron marcas creadas.'
     },
     category: {
         categories: 'Categorías',
         category: 'Categoría:',
         createCategory: 'Crear Categoría',
-        registeredCategory: 'Categorías registradas',
+        registeredCategory: 'Categorías creadas',
         dataNotValidMsg: 'Dato no válido. Debe escribir una categoría.',
         existingCategoryMsg: 'La Categoría ya existe.',
         cannotDeleteBCategoryMsg: 'No puede borrar la categoría porque tiene productos existentes.',
-        deleteCategoryMsg: 'Desea eliminar la categoría?'
+        deleteCategoryMsg: 'Desea eliminar la categoría?',
+        emptyCategoryList: 'No se encontraron categorías creadas.'
     },
     provider: {
         provider: 'Proveedor:',

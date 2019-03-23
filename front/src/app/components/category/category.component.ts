@@ -16,14 +16,28 @@ export class CategoryComponent implements OnInit {
   selectedCategory: Category;
   currentPage: Number = 1;
   appLiterals;
-  
+  loading: boolean;
+  emptyCategoryList: boolean;
+
   constructor(private categoryService: CategoryService, private productService: ProductService) {
     this.selectedCategory = new Category();
     this.appLiterals = appLiterals;
   }
 
   ngOnInit() {
+    this.loading = true;
     this.getCategories();
+  }
+
+  getCategories() {
+    this.categoryService.getCategories()
+      .subscribe(cs => {
+        this.loading = false;
+        this.categories = cs as Category[];
+        if (typeof this.categories === 'undefined' || this.categories.length <= 0) {
+          this.emptyCategoryList = true;
+        }
+      });
   }
 
   addCategory(categoryForm: NgForm) {
@@ -50,15 +64,9 @@ export class CategoryComponent implements OnInit {
               this.categories.push(category);
               this.selectedCategory.name = '';
               this.selectedCategory._id = '';
+              this.emptyCategoryList = false;
             });
         }
-      });
-  }
-
-  getCategories() {
-    this.categoryService.getCategories()
-      .subscribe(res => {
-        this.categories = res as Category[];
       });
   }
 
@@ -74,7 +82,10 @@ export class CategoryComponent implements OnInit {
         } else {
           if (confirm(this.appLiterals.category.deleteCategoryMsg)) {
             this.categories = this.categories.filter(b => b !== category);
-            this.categoryService.deleteCategory(category._id).subscribe();
+            this.categoryService.deleteCategory(category._id)
+            .subscribe(() => {
+              this.getCategories();
+            });
           }
         }
       });

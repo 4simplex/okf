@@ -22,7 +22,8 @@ export class CategoryService {
   }
 
   getCategory(id: string): Observable<Category> {
-    const url = `${environment.categoryUrl}/${id}`;
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    const url = `${environment.categoryUrl}/${userId}/${id}`;
     return this.http.get<Category>(url).pipe(
       // tap(_ => console.info(`Fetched brand id=${id}`)),
       catchError(this.handleError<Category>(`getBrand id=${id}`))

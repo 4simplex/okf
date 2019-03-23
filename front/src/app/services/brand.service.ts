@@ -47,7 +47,8 @@ export class BrandService {
 
   /** GET brand by id. Will 404 if id not found */
   getBrand(id: string): Observable<Brand> {
-    const url = `${environment.brandUrl}/${id}`;
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    const url = `${environment.brandUrl}/${userId}/${id}`;
     return this.http.get<Brand>(url).pipe(
       // tap(_ => console.info(`Fetched brand id=${id}`)),
       catchError(this.handleError<Brand>(`getBrand id=${id}`))

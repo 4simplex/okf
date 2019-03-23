@@ -4,7 +4,6 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 const User = require('../models/user');
-const dateHelper = require('../helpers/dateHelper');
 
 // Register
 router.post('/register', (req, res, next) => {
@@ -13,7 +12,6 @@ router.post('/register', (req, res, next) => {
     email: req.body.email,
     username: req.body.username,
     password: req.body.password,
-    // createdDate: dateHelper.createDateAsUTC(new Date()),
     createdDate: new Date(),
   });
 

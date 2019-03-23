@@ -16,6 +16,8 @@ export class BrandsComponent implements OnInit {
   selectedBrand: Brand;
   currentPage: Number = 1;
   appLiterals;
+  loading: boolean;
+  emptyBrandList: boolean;
 
   constructor(private brandService: BrandService, private productService: ProductService) {
     this.selectedBrand = new Brand();
@@ -24,12 +26,19 @@ export class BrandsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.getBrands();
   }
 
   getBrands(): void {
     this.brandService.getBrands()
-      .subscribe(bs => this.brands = bs);
+      .subscribe(bs => {
+        this.loading = false;
+        this.brands = bs as Brand[];
+        if (typeof this.brands === 'undefined' || this.brands.length <= 0) {
+          this.emptyBrandList = true;
+        }
+      });
   }
 
   addBrand(brandForm: NgForm): void {
@@ -55,6 +64,7 @@ export class BrandsComponent implements OnInit {
               this.brands.push(brand);
               this.selectedBrand.name = '';
               this.selectedBrand._id = '';
+              this.emptyBrandList = false;
             });
         }
       });
@@ -68,7 +78,10 @@ export class BrandsComponent implements OnInit {
         } else {
           if (confirm(this.appLiterals.brands.deleteBrandMsg)) {
             this.brands = this.brands.filter(b => b !== brand);
-            this.brandService.deleteBrand(brand).subscribe();
+            this.brandService.deleteBrand(brand)
+              .subscribe(() => {
+                this.getBrands();
+              });
           }
         }
       });
