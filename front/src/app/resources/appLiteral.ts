@@ -73,7 +73,8 @@ export const appLiterals = {
         salePriceIncorrectMsg: 'Precio de Venta, valor incorrecto.',
         deletePriceMsg: 'Desea eliminar el precio?',
         purchasePriceShort: 'Compra:',
-        salePriceShort: 'Venta:'
+        salePriceShort: 'Venta:',
+        emptyPriceList: 'No se encontraron precios creados.'
     },
     stock: {
         stock: 'Stock',
