@@ -57,6 +57,7 @@ export class BrandsComponent implements OnInit {
           if (!nameWithOneSpace) { return; }
           name = nameWithOneSpace;
           this.brands = [];
+          this.emptyBrandList = false;
           this.loading = true;
           this.brandService.addBrand({ name } as Brand)
             .subscribe(() => {

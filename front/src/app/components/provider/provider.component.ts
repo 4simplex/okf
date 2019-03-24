@@ -58,6 +58,7 @@ export class ProviderComponent implements OnInit {
           name = nameWithOneSpace;
           const info = form.controls.info.value;
           this.providers = [];
+          this.emptyProviderList = false;
           this.loading = true;
           this.providerService.postProvider({ name, info } as Provider)
             .subscribe(() => {

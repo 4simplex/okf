@@ -61,7 +61,8 @@ export const appLiterals = {
         dataNotValidMsg: 'Dato no válido. Debe escribir una categoría.',
         existingProductMsg: 'El producto ya existe.',
         deleteProductMsg: 'Desea eliminar el producto?',
-        productCode: 'Código de producto:'
+        productCode: 'Código de producto:',
+        emptyProductList: 'No se encontraron productos creados.'
     },
     price: {
         price: 'Precios',

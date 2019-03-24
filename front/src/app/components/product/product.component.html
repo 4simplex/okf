@@ -43,7 +43,14 @@
           <h5>Productos registrados</h5>
         </div>
       </div>
-      <div class="row align-items-center product-row" *ngFor="let product of productService.products | paginate: {itemsPerPage:10, currentPage: currentPage}">
+      <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="loading">
+        <app-spinner>
+        </app-spinner>
+      </div>
+      <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="emptyProductList">
+        <label>{{ appLiterals.product.emptyProductList }}</label>
+      </div>
+      <div class="row align-items-center product-row" *ngFor="let product of products | paginate: {itemsPerPage:5, currentPage: currentPage}">
         <div class="col-md-1">
           <div *ngIf="product.fileImg">
             <img [src]="'data:image/jpg;base64,'+product.fileImg" class="img-fluid" />

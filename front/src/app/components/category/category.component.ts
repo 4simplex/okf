@@ -58,6 +58,7 @@ export class CategoryComponent implements OnInit {
           if (!nameWithOneSpace) { return; }
           name = nameWithOneSpace;
           this.categories = [];
+          this.emptyCategoryList = false;
           this.loading = true;
           this.categoryService.postCategory({ name } as Category)
             .subscribe(() => {
