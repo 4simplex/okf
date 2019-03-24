@@ -6,6 +6,7 @@ import { Price } from 'src/app/models/price-model';
 import { ValidateService } from './../../services/validate.service';
 import { ProductService } from '../../services/product.service';
 import { RemoveWhiteSpaces } from '../../helpers/customValidators';
+import { appLiterals } from '../../resources/appLiteral';
 
 @Component({
   selector: 'app-price',
@@ -19,12 +20,14 @@ export class PriceComponent implements OnInit {
   prodCode: string;
   currentPage: Number = 1;
   productFileImage = '';
-  loading = false;
   searchResult;
   inputSearch = '';
   btnCreateDisabled = false;
   inputSearchReadOnly = false;
   btnResetFormDisabled = true;
+  appLiterals;
+  loading: boolean;
+  emptyPriceList: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -33,6 +36,7 @@ export class PriceComponent implements OnInit {
     private productService: ProductService
   ) {
     this.priceService = priceSrv;
+    this.appLiterals = appLiterals;
 
     this.priceForm = fb.group({
       'productForm': fb.group({
@@ -48,6 +52,7 @@ export class PriceComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.getAllPriceItems();
   }
 
@@ -65,6 +70,9 @@ export class PriceComponent implements OnInit {
       return;
     }
 
+    this.priceService.prices = [];
+    this.emptyPriceList = false;
+    this.loading = true;
     this.priceService.postPrice(this.priceForm.value)
       .subscribe(res => {
         const price = res as Price;
@@ -91,7 +99,9 @@ export class PriceComponent implements OnInit {
   getAllPriceItems() {
     this.priceService.getPriceLst()
       .subscribe(res => {
+        this.loading = false;
         this.priceService.prices = res as Price[];
+        this.emptyPriceList = (typeof this.priceService.prices === 'undefined' || this.priceService.prices.length <= 0);
       });
   }
 
@@ -104,7 +114,10 @@ export class PriceComponent implements OnInit {
   deletePrice(price: Price): void {
     if (confirm('Desea eliminar este item de Precios?')) {
       this.priceService.prices = this.priceService.prices.filter(s => s !== price);
-      this.priceService.deletePrice(price).subscribe();
+      this.priceService.deletePrice(price)
+        .subscribe(() => {
+          this.getAllPriceItems();
+        });
     }
   }
 

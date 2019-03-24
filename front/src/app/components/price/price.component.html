@@ -63,9 +63,14 @@
           <h5>Precios registrados</h5>
         </div>
       </div>
-
+      <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="loading">
+        <app-spinner>
+        </app-spinner>
+      </div>
+      <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="emptyPriceList">
+        <label>{{ appLiterals.price.emptyPriceList }}</label>
+      </div>
       <div class="row align-items-center price-row" *ngFor="let price of priceService.prices | paginate: {itemsPerPage:10, currentPage: currentPage}">
-
         <div class="col-md-1">
           <div *ngIf="price.productForm.product.fileImg">
             <img [src]="'data:image/jpg;base64,'+price.productForm.product.fileImg" class="img-fluid" />
