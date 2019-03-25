@@ -53,7 +53,7 @@ export class StatsComponent implements OnInit {
       firstDate.setSeconds(0);
 
       const secondDate = event[1];
-      secondDate.setHours(20);
+      secondDate.setHours(23);
       secondDate.setMinutes(59);
       secondDate.setSeconds(59);
 
