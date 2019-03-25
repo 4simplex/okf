@@ -77,7 +77,7 @@ export class StatsComponent implements OnInit {
   convertDateTime(res) {
     for (let i = 0; i < res.length; i++) {
       const currentDate = new Date(res[i].saleDate);
-      res[i].saleDate = new Date(currentDate.getTime() + Math.abs(currentDate.getTimezoneOffset() * 60000) );
+      res[i].saleDate = new Date(currentDate.getTime());
     }
 
     return res;
