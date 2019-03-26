@@ -3,4 +3,5 @@ export class Provider {
     name: string;
     info: string;
     user: string;
+    createdDate: Date;
 }

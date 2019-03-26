@@ -5,12 +5,13 @@ const categoryCtrl = {};
 
 
 categoryCtrl.getCategories = async (req, res) => {
-  const categories = await Category.find({user: req.params.userId});
+  const categories = await Category.find({user: req.params.userId}).sort({createdDate: 'descending'});
   res.json(categories);
 };
 
 categoryCtrl.createCategory = async (req, res) => {
   const category = new Category(req.body);
+  category.createdDate = new Date();
   await category.save();
   res.json(category);
 };

@@ -4,12 +4,13 @@ const Price = require('../models/price');
 const brandCtrl = {};
 
 brandCtrl.getBrands = async (req, res) => {
-  const brands = await Brand.find({user: req.params.userId});
+  const brands = await Brand.find({user: req.params.userId}).sort({createdDate: 'descending'});
   res.json(brands);
 };
 
 brandCtrl.createBrand = async (req, res) => {
   const brand = new Brand(req.body);
+  brand.createdDate = new Date();
   await brand.save();
   res.json(brand);
 };

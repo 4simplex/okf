@@ -4,12 +4,13 @@ const providerCtrl = {};
 
 
 providerCtrl.getProviders = async (req, res) => {
-  const providers = await Provider.find({user: req.params.userId});
+  const providers = await Provider.find({user: req.params.userId}).sort({createdDate: 'descending'});
   res.json(providers);
 };
 
 providerCtrl.createProvider = async (req, res) => {
   const provider = new Provider(req.body);
+  provider.createdDate = new Date();
   await provider.save();
   res.json(provider);
 };

@@ -28,4 +28,5 @@ export class Price {
     units: number;
     priceForUnits: number;
     user: string;
+    createdDate: Date;
 }

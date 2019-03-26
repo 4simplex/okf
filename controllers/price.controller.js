@@ -5,7 +5,7 @@ const productCodeCtrl = require('./productCode.controller');
 const codeGenerator = require('../helpers/codeGenerator');
 
 priceCtrl.getPriceLst = async (req, res) => {
-  const priceLst = await Price.find({user: req.params.userId});
+  const priceLst = await Price.find({user: req.params.userId}).sort({createdDate: 'descending'});
   res.json(priceLst);
 };
 
@@ -20,6 +20,7 @@ priceCtrl.createPrice = async (req, res) => {
   }
   price.productCode = generatedCode;
   price.stock = 0;
+  price.createdDate = new Date();
   await price.save();
   res.json(price);
 };

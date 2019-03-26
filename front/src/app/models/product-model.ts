@@ -7,4 +7,5 @@ export class Product {
     photo: string;
     fileImg: string;
     user: string;
+    createdDate: Date;
 }

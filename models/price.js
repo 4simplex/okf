@@ -13,6 +13,7 @@ const PriceSchema = new Schema({
   stock: {type: Number},
   stockSold: {type: Number},
   user: {type: String, required: true},
+  createdDate: {type: Date},
 });
 
 module.exports = mongoose.model('Price', PriceSchema);
