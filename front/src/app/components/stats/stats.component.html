@@ -18,15 +18,15 @@
       <div class="row">
         <div class="col-md-3">
           <h3>Compras:</h3>
-          <h2>{{purchaseTotal | currency}}</h2>
+          <h2>{{purchaseTotal | currency:'ARS':'code'}}</h2>
         </div>
         <div class="col-md-3">
           <h3>Ventas:</h3>
-          <h2>{{ salesTotal | currency}}</h2>
+          <h2>{{ salesTotal | currency:'ARS':'code'}}</h2>
         </div>
         <div class="col-md-3">
           <h3>Ganancias:</h3>
-          <h2 [ngStyle]="{'color': 'Chartreuse '}">{{ earningsTotal | currency}}</h2>
+          <h2 [ngStyle]="{'color': 'Chartreuse '}">{{ earningsTotal | currency:'ARS':'code'}}</h2>
         </div>
       </div>
       <div class="row" *ngIf="dataSell">
@@ -58,19 +58,19 @@
         <div class="col-md-5">
           <div *ngFor="let product of sell.productsGroup">
               <h4><strong>{{ product.productForm.product.brand.name }}</strong> - {{ product.productForm.product.name }} ({{ product.productCode }})</h4>
-              <p><strong>Precio Compra x U:</strong> {{ product.purchasePrice | currency }} <strong>Precio Venta x U:</strong> {{ product.salePrice | currency }}</p>
-              <p><strong>Unidades vendidas:</strong> {{ product.units }} <strong>Total Venta Unidades:</strong> {{ product.priceForUnits | currency }}</p>
+              <p><strong>Precio Compra x U:</strong> {{ product.purchasePrice | currency:'ARS':'code' }} <strong>Precio Venta x U:</strong> {{ product.salePrice | currency:'ARS':'code' }}</p>
+              <p><strong>Unidades vendidas:</strong> {{ product.units }} <strong>Total Venta Unidades:</strong> {{ product.priceForUnits | currency:'ARS':'code' }}</p>
           </div>
         </div>
   
         <div class="col-md-2">
-          <p><strong>Compras:</strong><br> {{ sell.purchasePriceTotal | currency }}</p>
+          <p><strong>Compras:</strong><br> {{ sell.purchasePriceTotal | currency:'ARS':'code' }}</p>
         </div>
         <div class="col-md-2">
-          <p><strong>Ventas:</strong><br> {{ sell.saleTotal | currency }}</p>
+          <p><strong>Ventas:</strong><br> {{ sell.saleTotal | currency:'ARS':'code' }}</p>
         </div>
         <div class="col-md-2">
-            <p><strong>Ganancias:</strong><br> {{ sell.saleTotal  - sell.purchasePriceTotal | currency}}</p>
+            <p><strong>Ganancias:</strong><br> {{ sell.saleTotal  - sell.purchasePriceTotal | currency:'ARS':'code'}}</p>
         </div>
       </div>
       <div class="row">

@@ -91,10 +91,10 @@
         </div>
 
         <div class="col-md-2">
-          <p><strong>Precio Compra:</strong><br> {{ price.purchasePrice | currency }}</p>
+          <p><strong>Precio Compra:</strong><br> {{ price.purchasePrice | currency:'ARS':'code' }}</p>
         </div>
         <div class="col-md-2">
-          <p><strong>Precio Venta:</strong><br> {{ price.salePrice  | currency}}</p>
+          <p><strong>Precio Venta:</strong><br> {{ price.salePrice  | currency:'ARS':'code' }}</p>
         </div>
 
 

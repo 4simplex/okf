@@ -26,8 +26,8 @@
             <div class="col-md-6">
               <h4><strong>{{ price.productForm.product.brand.name }}</strong> - {{ price.productForm.product.name }}</h4>
               <p>
-                <strong>{{ appLiterals.price.purchasePriceShort }}</strong> {{ price.purchasePrice | currency }}
-                <strong>{{ appLiterals.price.salePriceShort }}</strong> {{ price.salePrice  | currency}}
+                <strong>{{ appLiterals.price.purchasePriceShort }}</strong> {{ price.purchasePrice | currency:'ARS':'code' }}
+                <strong>{{ appLiterals.price.salePriceShort }}</strong> {{ price.salePrice  | currency:'ARS':'code' }}
                 <strong>{{ appLiterals.category.category }}</strong> {{ price.productForm.product.category.name }}
                 <strong>{{ appLiterals.provider.provider }}</strong> {{  price.provider.name }}
                 <strong>{{ appLiterals.product.productCode }}</strong> {{ price.productCode }}

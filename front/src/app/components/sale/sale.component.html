@@ -17,9 +17,9 @@
         <ul *ngIf="prices" class="searchResult">
           <li *ngFor="let price of prices">
             <p *ngIf="price.stock < 1">{{ price.productCode }} -
-              {{ price.productForm.product.name }} - {{ price.salePrice | currency }} - <strong>Stock: {{price.stock}}</strong></p>
+              {{ price.productForm.product.name }} - {{ price.salePrice | currency:'ARS':'code' }} - <strong>Stock: {{price.stock}}</strong></p>
             <a href="" *ngIf="price.stock >= 1 " (click)="addSearchResult(price, $event)">{{ price.productCode }} -
-                  {{ price.productForm.product.name }} - {{ price.salePrice | currency }} - Stock: {{price.stock}}</a>
+                  {{ price.productForm.product.name }} - {{ price.salePrice | currency:'ARS':'code' }} - Stock: {{price.stock}}</a>
           </li>
         </ul>
       </div>
@@ -36,7 +36,7 @@
               <h5 class="card-title">{{ priceFound.productForm.product.name }}</h5>
               <p class="card-text"><strong>Código:</strong> {{ priceFound.productCode }}<br> <strong>Stock:</strong> {{ priceFound.stock
                 }}
-                <br> <strong>Precio:</strong> {{ priceFound.salePrice | currency }}
+                <br> <strong>Precio:</strong> {{ priceFound.salePrice | currency:'ARS':'code' }}
               </p>
               <p class="card-text">Cantidad a vender: <input type="text" [(ngModel)]="units" style="width: 50px" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
                   (keyup)="changeUnits(priceFound.stock)">
@@ -63,7 +63,7 @@
 
             <div class="col-md-5">
               <h4>{{ product.productForm.product.name }}</h4>
-              <p><strong>{{appLiterals.sales.priceUnit}}:</strong>{{ product.salePrice | currency }} <br><strong>{{appLiterals.labelCategory}}:</strong> {{ product.productForm.product.category.name
+              <p><strong>{{appLiterals.sales.priceUnit}}:</strong>{{ product.salePrice | currency:'ARS':'code' }} <br><strong>{{appLiterals.labelCategory}}:</strong> {{ product.productForm.product.category.name
                 }} <br><strong>{{appLiterals.labelStock}}:</strong> {{ product.stock }} </p>
             </div>
 
@@ -71,7 +71,7 @@
               <p>{{ appLiterals.labelUnits }}: <input type="text" style="width: 50px" [(ngModel)]="product.units" (keyup)="modifyProduct(product, $event)"></p>
             </div>
             <div class="col-md-2">
-              <p><strong>{{ appLiterals.labelPrice }}:</strong><br> {{ product.priceForUnits | currency }}</p>
+              <p><strong>{{ appLiterals.labelPrice }}:</strong><br> {{ product.priceForUnits | currency:'ARS':'code' }}</p>
             </div>
 
             <div class="col-md-1">
@@ -81,7 +81,7 @@
         </div>
         <div class="col-md-12 mt-5" *ngIf="products.length > 0">
 
-          <h4 class="text-right">{{ appLiterals.labelTotal }}: {{this.total | currency}}</h4>
+          <h4 class="text-right">{{ appLiterals.labelTotal }}: {{this.total | currency:'ARS':'code'}}</h4>
           <button type="button" class="btn btn-primary float-right" (click)="sell()">{{ appLiterals.sales.btnSell }}</button>
           <button class="btn btn-default float-right mr-3" (click)="cancelSell()">{{ appLiterals.btnCancel }}</button>
         </div>
