@@ -12,8 +12,8 @@
       <div class="row mb-5">
         <div class="col-md-8">
           <form #brandForm="ngForm" (ngSubmit)="addBrand(brandForm)" class="form-group">
-            <input required type="text" name="name" #name [(ngModel)]="selectedBrand.name" placeholder="{{ appLiterals.placeholderName }}"
-              class="form-control mb-3" />
+            <label for="name" class="required">{{ appLiterals.placeholderName }}</label>
+            <input required type="text" name="name" #name [(ngModel)]="selectedBrand.name" class="form-control mb-3" />
             <button [disabled]="!brandForm.valid" class="btn btn-primary">{{ appLiterals.btnCreate }}</button>
           </form>
         </div>

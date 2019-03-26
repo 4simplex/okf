@@ -13,7 +13,8 @@
       <div class="row mb-5">
         <div class="col-md-8">
           <div class="form-group">
-            <input [(ngModel)]="brand.name" type="text" class="form-control mb-3" />
+            <label for="name" class="required">Nombre</label>
+            <input [(ngModel)]="brand.name" type="text" name="name" class="form-control mb-3" />
             <button (click)="goBack()" class="mr-2 btn btn-primary">
               {{ this.appLiterals.btnBack }}
             </button>

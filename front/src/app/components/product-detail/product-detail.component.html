@@ -16,7 +16,8 @@
           <app-brand-selector [parentForm]="productForm.get('brand')"></app-brand-selector>
 
           <div class="form-group">
-            <input type="text" formControlName="name" placeholder="Nombre" class="form-control" />
+            <label for="name" class="required">Nombre del producto</label>
+            <input type="text" formControlName="name" class="form-control" />
             <div *ngIf="productForm.get('name').touched && productForm.get('name').invalid">
               <p *ngIf="!productForm.get('name').errors.valid">
                 Debe escribir un nombre
@@ -26,7 +27,8 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <textarea placeholder="Descripción" id="description" formControlName="description" class="form-control"></textarea>
+            <label for="description">Descripción</label>
+            <textarea id="description" formControlName="description" class="form-control"></textarea>
           </div>
 
           <div *ngIf="!initImg">

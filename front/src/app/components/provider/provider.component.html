@@ -13,8 +13,10 @@
         <div class="col-md-8">
           <form #providerForm="ngForm" (ngSubmit)="addProvider(providerForm)" class="form-group">
             <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="selectedProvider._id">
-            <input type="text" name="name" #name="ngModel" [(ngModel)]="selectedProvider.name" placeholder="Nombre" class="form-control mb-3" required>
-            <input type="text" name="info" #info="ngModel" [(ngModel)]="selectedProvider.info" placeholder="Información del Proveedor" class="form-control mb-3">
+            <label for="name" class="required">Nombre</label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="selectedProvider.name" class="form-control mb-3" required>
+            <label for="info">Información del Proveedor</label>
+            <input type="text" name="info" #info="ngModel" [(ngModel)]="selectedProvider.info" class="form-control mb-3">
             <button [disabled]="!providerForm.valid" class="btn btn-primary">{{ appLiterals.btnCreate }}</button>
           </form>
         </div>

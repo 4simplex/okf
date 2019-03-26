@@ -13,7 +13,9 @@
       <div class="row mb-5">
         <div class="col-md-8">
           <form #providerForm="ngForm" (ngSubmit)="save(providerForm)" class="form-group">
+            <label for="name" class="required">Nombre</label>
             <input [(ngModel)]="provider.name" type="text" name="name" class="form-control mb-3" required/>
+            <label for="info">Información del Proveedor</label>
             <input [(ngModel)]="provider.info" type="text" name="info" class="form-control mb-3" />
             <button type="button" (click)="goBack()" class="mr-2 btn btn-primary">Volver</button>
             <button type="submit" [disabled]="!providerForm.valid" class="btn btn-primary">Guardar</button>

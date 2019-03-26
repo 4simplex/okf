@@ -12,30 +12,34 @@
       <div class="row">
         <div class="col-md-6">
 
-            <div class="form-group searchContainer">
-              <input type="text" [readonly]="inputSearchReadOnly" class="form-control" (keyup)="searchProduct($event)" capitalize placeholder="Buscar Producto...." [value]="inputSearch" />
-              <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="loadingSearch">
-                <app-spinner>
-                </app-spinner>
-              </div>
-              <ul *ngIf="searchResult" class="searchResult">
-                <li *ngFor="let result of searchResult">
-                  <a href="" (click)="addSearchResult(result, $event)">{{ result.brand.name }} - {{ result.name }} </a>
-                </li>
-              </ul>
+          <div class="form-group searchContainer">
+            <label for="searchInput" class="required">Producto</label>
+            <input type="text" name="searchInput" [readonly]="inputSearchReadOnly" class="form-control" (keyup)="searchProduct($event)" capitalize placeholder="Buscar Producto...." [value]="inputSearch" />
+            <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="loadingSearch">
+              <app-spinner>
+              </app-spinner>
             </div>
-
+            <ul *ngIf="searchResult" class="searchResult">
+              <li *ngFor="let result of searchResult">
+                <a href="" (click)="addSearchResult(result, $event)">{{ result.brand.name }} - {{ result.name }} </a>
+              </li>
+            </ul>
+          </div>
+          
           <app-provider-selector [parentForm]="priceForm.get('provider')"></app-provider-selector>
 
           <div class="form-group">
-            <input type="text" formControlName="purchasePrice" placeholder="Precio de Compra x Unidad" class="form-control" />
+            <label for="purchasePrice" class="required">Precio de Compra x Unidad</label>
+            <input type="text" formControlName="purchasePrice" class="form-control" />
           </div>
 
           <div class="form-group">
-            <input type="text" formControlName="salePrice" placeholder="Precio de Venta x Unidad" class="form-control" />
+            <label for="salePrice" class="required">Precio de Venta x Unidad</label>
+            <input type="text" formControlName="salePrice" class="form-control" />
           </div>
 
-          <div class="form-group">
+          <div class="form-group" *ngIf="prodCode">
+            <label for="productCode">Código de producto</label>
             <p>{{ prodCode }}</p>
           </div>
 

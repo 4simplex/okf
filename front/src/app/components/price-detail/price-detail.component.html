@@ -12,19 +12,24 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
+            <label for="productLongName">Producto</label>
             <input type="text" formControlName="productLongName" class="form-control" />
           </div>
+
           <app-provider-selector [parentForm]="priceForm.get('provider')"></app-provider-selector>
 
           <div class="form-group">
+              <label for="purchasePrice" class="required">Precio de Compra x Unidad</label>
             <input type="text" formControlName="purchasePrice" placeholder="Precio de Compra x Unidad" class="form-control" />
           </div>
 
           <div class="form-group">
+            <label for="salePrice" class="required">Precio de Venta x Unidad</label>
             <input type="text" formControlName="salePrice" placeholder="Precio de Venta x Unidad" class="form-control" />
           </div>
 
           <div class="form-group">
+            <label for="productCode">Código de producto</label>
             <input type="text" formControlName="productCode" class="form-control" />
           </div>
 
