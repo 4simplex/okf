@@ -14,7 +14,7 @@
 
             <div class="form-group searchContainer">
               <input type="text" [readonly]="inputSearchReadOnly" class="form-control" (keyup)="searchProduct($event)" capitalize placeholder="Buscar Producto...." [value]="inputSearch" />
-              <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="loading">
+              <div class="col-md-12" style="text-align: center; padding-top: 15px;" *ngIf="loadingSearch">
                 <app-spinner>
                 </app-spinner>
               </div>

@@ -27,6 +27,7 @@ export class PriceComponent implements OnInit {
   btnResetFormDisabled = true;
   appLiterals;
   loading: boolean;
+  loadingSearch: boolean;
   emptyPriceList: boolean;
 
   constructor(
@@ -136,12 +137,11 @@ export class PriceComponent implements OnInit {
         return;
       }
 
-      this.loading = true;
-
       const searchWhithOneSpace = RemoveWhiteSpaces(searchValue);
+      this.loadingSearch = true;
       this.productService.searchProductByName(searchWhithOneSpace)
         .subscribe(res => {
-          this.loading = false;
+          this.loadingSearch = false;
           this.searchResult = res;
         });
     }
