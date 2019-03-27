@@ -64,6 +64,11 @@ export class PriceService {
     return this.http.get<Price>(environment.priceUrl + `/getprice/${userId}` + `/${name}`);
   }
 
+  getPriceByProvider(providerId): Observable<Price> {
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    return this.http.get<Price>(environment.priceUrl + `/getStock/${userId}/${providerId}`);
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

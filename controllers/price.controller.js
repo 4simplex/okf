@@ -39,7 +39,6 @@ priceCtrl.getPriceByName = async (req, res) => {
   });
 
   if (price.length == 0) {
-    // const name = await Price.find();
     const name = await Price.find({
       $and: [
         {user: req.params.userId},
@@ -51,6 +50,17 @@ priceCtrl.getPriceByName = async (req, res) => {
     return;
   }
   res.json(price);
+};
+
+priceCtrl.getPriceByProvider = async (req, res) => {
+  const priceFound = await Price.findOne({
+    $and: [
+      { user: req.params.userId},
+      {'provider._id': req.params.providerId},
+    ],
+  });
+
+  res.json(priceFound);
 };
 
 priceCtrl.editPrice = async (req, res) => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProviderService } from '../../services/provider.service';
+import { PriceService } from '../../services/price.service';
 import { NgForm } from '@angular/forms';
 import { Provider } from 'src/app/models/provider-model';
 import { RemoveWhiteSpaces } from '../../helpers/customValidators';
@@ -18,7 +19,7 @@ export class ProviderComponent implements OnInit {
   loading: boolean;
   emptyProviderList: boolean;
 
-  constructor(private providerService: ProviderService) {
+  constructor(private providerService: ProviderService, private priceService: PriceService) {
     this.selectedProvider = new Provider();
     this.appLiterals = appLiterals;
   }
@@ -76,14 +77,21 @@ export class ProviderComponent implements OnInit {
   }
 
   deleteProvider(_id: string) {
-    if (confirm('Está seguro de querer eliminarlo?')) {
-      this.providers = [];
-      this.loading = true;
-      this.providerService.deleteProvider(_id)
-        .subscribe(() => {
-          this.getProviders();
-        });
-    }
+    this.priceService.getPriceByProvider(_id)
+      .subscribe(price => {
+        if (price !== null) {
+          alert('No se puede eliminar porque hay precios registrados para este proveedor');
+        } else {
+          if (confirm('Está seguro de querer eliminarlo?')) {
+            this.providers = [];
+            this.loading = true;
+            this.providerService.deleteProvider(_id)
+              .subscribe(() => {
+                this.getProviders();
+              });
+          }
+        }
+      });
   }
 
 }
