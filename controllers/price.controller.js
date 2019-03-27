@@ -63,6 +63,17 @@ priceCtrl.getPriceByProvider = async (req, res) => {
   res.json(priceFound);
 };
 
+priceCtrl.getPriceByProduct = async (req, res) => {
+  const priceFound = await Price.findOne({
+    $and: [
+      { user: req.params.userId},
+      {'productForm.product._id': req.params.productId},
+    ],
+  });
+
+  res.json(priceFound);
+};
+
 priceCtrl.editPrice = async (req, res) => {
   const price = {
     purchasePrice: req.body.purchasePrice,

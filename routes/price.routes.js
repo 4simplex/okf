@@ -9,6 +9,7 @@ router.get('/getprice/:userId/:productCode', priceCtrl.getPriceByName);
 router.get('/:id', priceCtrl.getPrice);
 router.put('/:id', priceCtrl.editPrice);
 router.delete('/:id', priceCtrl.deletePrice);
-router.get('/getStock/:userId/:providerId', priceCtrl.getPriceByProvider);
+router.get('/getProvider/:userId/:providerId', priceCtrl.getPriceByProvider);
+router.get('/getProduct/:userId/:productId', priceCtrl.getPriceByProduct);
 
 module.exports = router;

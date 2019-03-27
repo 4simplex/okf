@@ -66,7 +66,12 @@ export class PriceService {
 
   getPriceByProvider(providerId): Observable<Price> {
     const userId = JSON.parse(localStorage.getItem('user')).id;
-    return this.http.get<Price>(environment.priceUrl + `/getStock/${userId}/${providerId}`);
+    return this.http.get<Price>(environment.priceUrl + `/getProvider/${userId}/${providerId}`);
+  }
+
+  getPriceByProduct(productId): Observable<Price> {
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    return this.http.get<Price>(environment.priceUrl + `/getProduct/${userId}/${productId}`);
   }
 
   /**

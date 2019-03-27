@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
+import { PriceService } from '../../services/price.service';
 import { Product } from 'src/app/models/product-model';
 import { UploadImageComponent } from '../upload-image/upload-image.component';
 import { getNoImage } from '../../../assets/noimage';
@@ -24,7 +25,7 @@ export class ProductComponent implements OnInit {
   loading: boolean;
   emptyProductList: boolean;
 
-  constructor(fb: FormBuilder, productSrv: ProductService) {
+  constructor(fb: FormBuilder, productSrv: ProductService, private priceService: PriceService) {
     this.appLiterals = appLiterals;
     this.productService = productSrv;
 
@@ -101,14 +102,21 @@ export class ProductComponent implements OnInit {
   }
 
   deleteProduct(_id: string) {
-    if (confirm('Desea eliminar el producto?')) {
-      this.products = [];
-      this.loading = true;
-      this.productService.deleteProduct(_id)
-        .subscribe(() => {
-          this.getAllProducts();
-        });
-    }
+    this.priceService.getPriceByProduct(_id)
+      .subscribe(price => {
+        if (price !== null) {
+          alert('No se puede eliminar porque hay precios registrados para este producto');
+        } else {
+          if (confirm('Desea eliminar el producto?')) {
+            this.products = [];
+            this.loading = true;
+            this.productService.deleteProduct(_id)
+              .subscribe(() => {
+                this.getAllProducts();
+              });
+          }
+        }
+      });
   }
 
   editProduct(product) {
