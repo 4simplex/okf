@@ -113,12 +113,22 @@ export class PriceComponent implements OnInit {
   }
 
   deletePrice(price: Price): void {
-    if (confirm('Desea eliminar este item de Precios?')) {
-      this.priceService.prices = this.priceService.prices.filter(s => s !== price);
-      this.priceService.deletePrice(price)
-        .subscribe(() => {
-          this.getAllPriceItems();
-        });
+    if (price.stock > 0) {
+      if (confirm(`Hay ${price.stock} unidades en stock con este precio, desea eliminarlo de todas maneras?`)) {
+        this.priceService.prices = this.priceService.prices.filter(s => s !== price);
+        this.priceService.deletePrice(price)
+          .subscribe(() => {
+            this.getAllPriceItems();
+          });
+      }
+    } else {
+      if (confirm('Desea eliminar este item de Precios?')) {
+        this.priceService.prices = this.priceService.prices.filter(s => s !== price);
+        this.priceService.deletePrice(price)
+          .subscribe(() => {
+            this.getAllPriceItems();
+          });
+      }
     }
   }
 
