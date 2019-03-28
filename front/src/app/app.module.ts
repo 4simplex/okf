@@ -41,9 +41,10 @@ import { StockComponent } from './components/stock/stock.component';
 import { SaleComponent } from './components/sale/sale.component';
 import { StatsComponent } from './components/stats/stats.component';
 import { ChartgraphComponent } from './components/chartgraph/chartgraph.component';
-
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { registerLocaleData } from '@angular/common';
 import localeEsAr from '@angular/common/locales/es-AR';
+
 registerLocaleData(localeEsAr, 'es-Ar');
 
 @NgModule({
@@ -73,7 +74,8 @@ registerLocaleData(localeEsAr, 'es-Ar');
     StockComponent,
     SaleComponent,
     StatsComponent,
-    ChartgraphComponent
+    ChartgraphComponent,
+    NotFoundComponent
   ],
 
   imports: [
