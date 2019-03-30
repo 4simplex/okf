@@ -43,6 +43,8 @@ import { StatsComponent } from './components/stats/stats.component';
 import { ChartgraphComponent } from './components/chartgraph/chartgraph.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { registerLocaleData } from '@angular/common';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
+import { RECAPTCHA_LANGUAGE, RecaptchaModule } from 'ng-recaptcha';
 import localeEsAr from '@angular/common/locales/es-AR';
 
 registerLocaleData(localeEsAr, 'es-Ar');
@@ -88,7 +90,9 @@ registerLocaleData(localeEsAr, 'es-Ar');
     BsDatepickerModule.forRoot(),
     ChartsModule,
     FlashMessagesModule.forRoot(),
-    HttpModule
+    HttpModule,
+    RecaptchaFormsModule,
+    RecaptchaModule.forRoot(),
   ],
 
   providers: [
@@ -99,7 +103,8 @@ registerLocaleData(localeEsAr, 'es-Ar');
     ValidateService,
     AuthService,
     AuthGuard,
-    { provide: LOCALE_ID, useValue: 'es-Ar' }
+    { provide: LOCALE_ID, useValue: 'es-Ar' },
+    { provide: RECAPTCHA_LANGUAGE, useValue: 'es-Ar' }
   ],
 
   bootstrap: [AppComponent]

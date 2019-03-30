@@ -1,5 +1,4 @@
-<form (submit)="onRegisterSubmit()" class="form-group">
-
+<form #captchaProtectedForm="ngForm" (ngSubmit)="onRegisterSubmit()" class="form-group">
   <div class="form-group">
     <label>{{ appLiterals.user.name }}</label>
     <input type="text" [(ngModel)]="name" name="name" class="form-control">
@@ -17,12 +16,25 @@
 
   <div class="form-group">
     <label>{{ appLiterals.user.password }}</label>
-    <input type="password" [(ngModel)]="password" name="password"class="form-control">
+    <input type="password" [(ngModel)]="password" name="password" class="form-control">
   </div>
 
-  <button type="submit" class="btn btn-primary">{{ this.appLiterals.btnRegister }}</button>
+  <div class="form-group">
+    <re-captcha class="center-recaptcha" 
+      [(ngModel)]="formModel.captcha" 
+      name="captcha" 
+      required 
+      siteKey="6LduvpoUAAAAAEkPrFVkwVgeU8_Tzhj_Kpy4HAED" 
+      #captchaControl="ngModel">
+    </re-captcha>
+  </div>
 
+  <button type="submit" [disabled]="!captchaProtectedForm.form.valid" class="btn btn-primary">
+    {{ this.appLiterals.btnRegister }}
+  </button>
 </form>
+
+
 <!--<div class="container">
     <div class="row mb-3">
       <div class="col-md-12">

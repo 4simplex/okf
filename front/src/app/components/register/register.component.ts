@@ -5,12 +5,17 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 import { appLiterals } from '../../resources/appLiteral';
 
+export interface FormModel {
+  captcha?: string;
+}
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  private formModel: FormModel = {};
   name: String;
   username: String;
   email: String;
@@ -61,4 +66,5 @@ export class RegisterComponent implements OnInit {
         }
       });
   }
+
 }
