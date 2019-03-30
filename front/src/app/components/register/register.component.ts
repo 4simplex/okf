@@ -15,7 +15,7 @@ export interface FormModel {
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private formModel: FormModel = {};
+  formModel: FormModel = {};
   name: String;
   username: String;
   email: String;
