@@ -18,8 +18,10 @@
     [class.has-error]="passwordGroup.errors?.notEqual && !confirmPassword.errors?.required">
     <div class="form-group" [class.has-error]="pwd.touched && pwd.invalid">
       <label for="password" class="control-label">{{ appLiterals.user.password }}</label>
-      <input name="password" required type="password" class="form-control"
-        [(ngModel)]="passwordField" #pwd="ngModel">
+      <show-hide-password btnStyle="info" [btnOutline]="false">
+        <input name="password" required type="password" class="form-control"
+          [(ngModel)]="passwordField" #pwd="ngModel">
+      </show-hide-password>
       <span class="help-block error text-danger" *ngIf="pwd.touched && pwd.errors?.required">
         {{ appLiterals.register.passwordRequired }}
       </span>
@@ -28,8 +30,10 @@
     <div class="form-group" 
       [class.has-error]="confirmPassword.touched && confirmPassword.invalid">
       <label for="confirmPassword" class="control-label">{{ appLiterals.user.confirmPassword }}</label>
-      <input name="confirmPassword" required type="password" class="form-control" #confirmPassword="ngModel"
-        [(ngModel)]="confirmPasswordField" >
+      <show-hide-password btnStyle="info" [btnOutline]="false">
+        <input name="confirmPassword" required type="password" class="form-control" #confirmPassword="ngModel"
+          [(ngModel)]="confirmPasswordField" >
+      </show-hide-password>
       <span class="help-block error text-danger"
         *ngIf="confirmPassword.touched && confirmPassword.errors?.required">
         {{ appLiterals.register.confirmPasswordRequired }}

@@ -20,6 +20,9 @@
     "@angular/platform-browser": "^6.1.0",
     "@angular/platform-browser-dynamic": "^6.1.0",
     "@angular/router": "^6.1.0",
+    "@fortawesome/angular-fontawesome": "^0.3.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "angular2-flash-messages": "^3.0.1",
     "angular2-jwt": "^0.2.3",
     "chart.js": "^2.7.3",
@@ -28,6 +31,7 @@
     "ng2-charts": "^1.6.0",
     "ngx-bootstrap": "^3.2.0",
     "ngx-pagination": "^3.2.1",
+    "ngx-show-hide-password": "^2.0.3",
     "rxjs": "6.0.0",
     "rxjs-compat": "^6.4.0",
     "zone.js": "~0.8.26"
