@@ -46,6 +46,7 @@ import { registerLocaleData } from '@angular/common';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 import { RECAPTCHA_LANGUAGE, RecaptchaModule } from 'ng-recaptcha';
 import localeEsAr from '@angular/common/locales/es-AR';
+import { ConfirmEqualValidatorDirective } from './directives/confirm-equal-validator.directive';
 
 registerLocaleData(localeEsAr, 'es-Ar');
 
@@ -77,7 +78,8 @@ registerLocaleData(localeEsAr, 'es-Ar');
     SaleComponent,
     StatsComponent,
     ChartgraphComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ConfirmEqualValidatorDirective
   ],
 
   imports: [

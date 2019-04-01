@@ -1,0 +1,6 @@
+.has-error .form-control {
+   border: 1px solid #f44336 !important;
+   -webkit-box-shadow: none !important;
+   -ms-box-shadow: none !important;
+   box-shadow: none !important;
+}

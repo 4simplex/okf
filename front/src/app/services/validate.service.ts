@@ -9,7 +9,7 @@ export class ValidateService {
   constructor() { }
 
   validateRegister(user) {
-    if (!user.name || !user.username || !user.email || !user.password) {
+    if (!user.name || !user.username || !user.email) {
       return false;
     } else {
       return true;

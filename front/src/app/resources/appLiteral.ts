@@ -107,6 +107,7 @@ export const appLiterals = {
         email: 'Correo electrónico',
         profile: 'Página de perfil',
         password: 'Contraseña',
+        confirmPassword: 'Confirmar contraseña',
         account: 'Datos de la cuenta',
         name: 'Nombre y apellido',
         createdDate: 'Fecha de registración',
@@ -122,6 +123,9 @@ export const appLiterals = {
         registerConfirmationMsg: 'Ahora estás registrado y puedes iniciar sesión',
         useValidEmailMsg: 'Por favor use un correo electrónico válido',
         fillAllFieldsMsg: 'Todos los campos son requeridos',
+        passwordRequired: 'La contraseña es requerida.',
+        confirmPasswordRequired: 'La confirmación es requerida.',
+        passwordsMismatch: 'Las contraseñas no coinciden.'
     },
     menu: {
       login: 'Ingresar',
